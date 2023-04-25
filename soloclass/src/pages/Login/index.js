@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { View, StyleSheet, Text } from "react-native"
+import { View, StyleSheet, Text } from "react-native";
 import CustomButton from "../../components/CustomButton";
 import CustomTextInput from "../../components/CustomTextInput";
 
@@ -10,7 +10,9 @@ export default function Home(){
     return(
         <View style={styles.container}>
             <Text style={styles.logo}>SoloClass</Text>
-            <CustomTextInput/>
+            <CustomTextInput
+                placeholder="Login"
+            />
             <CustomButton
                 title="Login"
                 route="Home"

@@ -1,15 +1,24 @@
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { Button, Text, View } from "react-native"
+import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View } from "react-native"
 
 import DrawerNav from "../../components/DrawerNav";
+import CustomButton from "../../components/CustomButton";
 
 export default function Home(){
-    
-    const navigation = useNavigation();
 
     return(
-        <View>
-            <Text>Sim</Text>
+        <View style={styles.container}>
+            <CustomButton title="Teste" route="Config"/>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#DAFFF9',
+        padding: 10
+      }
+});

@@ -9,6 +9,7 @@ import Login from './src/pages/Login';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
+import Config from './src/pages/Config';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -19,10 +20,11 @@ export default function App() {
     <NavigationContainer
       style={{backgroundColor: '#DAFFF9'}}
     >
-      <Stack.Navigator style={{backgroundColor: '#DAFFF9'}}>
-        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
-        <Stack.Screen name="Home" component={Home}/>
-      </Stack.Navigator>
+      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+      <Drawer.Navigator style={{backgroundColor: '#DAFFF9'}}>
+        <Drawer.Screen name="Home" component={Home}/>
+        <Drawer.Screen name="Config" component={Config}/>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }

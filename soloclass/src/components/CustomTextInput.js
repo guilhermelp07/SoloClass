@@ -8,6 +8,7 @@ export default function CustomTextInput(props) {
     return (
         <TextInput
             style={styles.textInput}
+            placeholder={props.placeholder}
         />
     );
 
@@ -15,8 +16,8 @@ export default function CustomTextInput(props) {
 
 const styles = StyleSheet.create({
     textInput: {
-        width: 250,
-        height: 70,
+        width: 270,
+        height: 60,
         borderRadius: 5,
         borderColor: '#aaa',
         borderWidth: 2,
