@@ -1,11 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { DrawerContentScrollView, DrawerItem, createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from '@react-navigation/native';
 import { View } from 'react-native';
-
-import MainStack from './MainStack';
-import { DefaultTheme } from '@react-navigation/native';
 
 import Home from '../pages/Home';
 

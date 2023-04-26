@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Text, TextInput, StyleSheet } from "react-native";
+import { TextInput, StyleSheet } from "react-native";
 
 export default function CustomTextInput(props) {
 
