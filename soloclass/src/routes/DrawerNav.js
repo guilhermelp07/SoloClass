@@ -12,7 +12,7 @@ export default function DrawerNav() {
         <Drawer.Navigator
             drawerContent={(props) => <CustomDrawerComp {...props} />}
         >
-            <Drawer.Screen name='Home' component={Home} options={{headerShown: true}} />
+            <Drawer.Screen name='SoloClass' component={Home} options={{headerShown: true}} />
         </Drawer.Navigator>
     );
 }
@@ -25,7 +25,7 @@ export const CustomDrawerComp = (props) => {
             <View style={{flexGrow: 2}}>
                 <DrawerItem
                     label="Home"
-                    onPress={() => navigation.navigate('Home')}
+                    onPress={() => navigation.navigate('SoloClass')}
                 />
                 <DrawerItem
                     label="Configurações"

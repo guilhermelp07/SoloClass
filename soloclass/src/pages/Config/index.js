@@ -1,4 +1,4 @@
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { Button, Text, View } from "react-native"
 
 export default function Config(){
