@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from "react-native";
 import CustomButton from "../../components/CustomButton";
 import CustomTextInput from "../../components/CustomTextInput";
 
-export default function Home(){
+export default function Login(){
     
     const navigation = useNavigation();
 
@@ -12,6 +12,10 @@ export default function Home(){
             <Text style={styles.logo}>SoloClass</Text>
             <CustomTextInput
                 placeholder="Login"
+            />
+            <CustomTextInput
+                placeholder="Senha"
+                secureTextEntry={true}
             />
             <CustomButton
                 title="Login"
@@ -31,6 +35,7 @@ const styles = StyleSheet.create({
       },
       logo: {
         fontSize: 50,
-        margin: 20
+        margin: 20,
+        marginBottom: 60
       }
 });

@@ -1,14 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native"
 
-import DrawerNav from "../../components/DrawerNav";
+import DrawerNav from "../../routes/DrawerNav";
 import CustomButton from "../../components/CustomButton";
 
 export default function Home(){
 
     return(
         <View style={styles.container}>
-            <CustomButton title="Teste" route="Config"/>
+            <CustomButton title="Histórico" route="Histórico de Solos"/>
         </View>
     );
 }
