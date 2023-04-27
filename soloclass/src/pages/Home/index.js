@@ -7,6 +7,7 @@ export default function Home(){
 
     return(
         <View style={styles.container}>
+            <CustomButton title="Novo Solo" route="Novo Solo"/>
             <CustomButton title="Histórico" route="Histórico de Solos"/>
         </View>
     );
