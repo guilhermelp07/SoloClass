@@ -17,12 +17,12 @@ const myTheme = {
     colors: {
         card: '#459C9C',
     }
-  };
+};
 
 export default function MainStack(){
     return (
         <NavigationContainer theme={myTheme}>
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{headerTitleAlign: 'center'}}>
                 <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
                 <Stack.Screen name="Home" component={DrawerNav} options={{headerShown: false}} />
                 <Stack.Screen name="Histórico de Solos" component={ListagemSolos} />

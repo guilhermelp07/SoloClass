@@ -1,0 +1,31 @@
+import { StyleSheet } from "react-native";
+
+export default styles = StyleSheet.create({
+    btnText: {
+        fontSize: 26,
+        color: '#fff'
+    },
+    botao: {
+        width: 180,
+        height: 60,
+        borderRadius: 12,
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#459C9C',
+        margin: 20
+    },
+    tButton: {
+        width: 150,
+        height: 30,
+        backgroundColor: 'transparent',
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 10
+    },
+    tButtonText: {
+        fontSize: 15,
+        color: '#459C9C'
+    }
+});

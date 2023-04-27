@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { DrawerContentScrollView, DrawerItem, createDrawerNavigator } from "@react-navigation/drawer";
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import Home from '../pages/Home';
 
@@ -10,6 +10,7 @@ const Drawer = createDrawerNavigator();
 export default function DrawerNav() {
     return (
         <Drawer.Navigator
+            screenOptions={{headerTitleAlign: 'center'}}
             drawerContent={(props) => <CustomDrawerComp {...props} />}
         >
             <Drawer.Screen name='SoloClass' component={Home} options={{headerShown: true}} />
