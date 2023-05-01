@@ -9,6 +9,7 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import NovoSolo from '../pages/NovoSolo';
 import CadastrarUsuario from '../pages/CadastrarUsuario';
 import RecuperarSenha from '../pages/RecuperarSenha';
+import DetalhesSolo from '../pages/DetalhesSolo';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ export default function MainStack(){
                 <Stack.Screen name="Novo Solo" component={NovoSolo} />
                 <Stack.Screen name="Cadastrar Usuário" component={CadastrarUsuario} />
                 <Stack.Screen name="Recuperar Senha" component={RecuperarSenha} />
+                <Stack.Screen name="Detalhes do Solo" component={DetalhesSolo} />
             </Stack.Navigator>
         </NavigationContainer>
     );
