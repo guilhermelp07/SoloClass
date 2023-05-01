@@ -2,13 +2,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
 import Login from '../pages/Login';
-import Home from '../pages/Home';
 import ListagemSolos from '../pages/ListagemSolos';
 import Config from '../pages/Config';
 import DrawerNav from './DrawerNav';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import NovoSolo from '../pages/NovoSolo';
 import CadastrarUsuario from '../pages/CadastrarUsuario';
+import RecuperarSenha from '../pages/RecuperarSenha';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +29,7 @@ export default function MainStack(){
                 <Stack.Screen name="Configurações" component={Config} />
                 <Stack.Screen name="Novo Solo" component={NovoSolo} />
                 <Stack.Screen name="Cadastrar Usuário" component={CadastrarUsuario} />
+                <Stack.Screen name="Recuperar Senha" component={RecuperarSenha} />
             </Stack.Navigator>
         </NavigationContainer>
     );

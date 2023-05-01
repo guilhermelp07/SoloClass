@@ -23,7 +23,7 @@ export default function Login(){
             />
             <TextButton
                 title="Esqueceu a senha?"
-                route="Cadastrar Usuário"
+                route="Recuperar Senha"
             />
             <TextButton
                 title="Cadastrar-se"
