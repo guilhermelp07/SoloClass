@@ -10,6 +10,7 @@ import NovoSolo from '../pages/NovoSolo';
 import CadastrarUsuario from '../pages/CadastrarUsuario';
 import RecuperarSenha from '../pages/RecuperarSenha';
 import DetalhesSolo from '../pages/DetalhesSolo';
+import CameraScreen from '../pages/Camera';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,7 @@ export default function MainStack(){
                 <Stack.Screen name="Cadastrar Usuário" component={CadastrarUsuario} />
                 <Stack.Screen name="Recuperar Senha" component={RecuperarSenha} />
                 <Stack.Screen name="Detalhes do Solo" component={DetalhesSolo} />
+                <Stack.Screen name="Camera" component={CameraScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
