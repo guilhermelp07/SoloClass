@@ -25,10 +25,6 @@ export const CustomDrawerComp = (props) => {
         <DrawerContentScrollView {...props}>
             <View style={{flexGrow: 2}}>
                 <DrawerItem
-                    label="Home"
-                    onPress={() => navigation.navigate('SoloClass')}
-                />
-                <DrawerItem
                     label="Configurações"
                     onPress={() => navigation.navigate('Configurações')}
                 />

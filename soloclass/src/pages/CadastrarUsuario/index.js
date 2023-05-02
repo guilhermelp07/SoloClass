@@ -10,13 +10,13 @@ export default function CadastrarUsuario(){
             <CustomTextInput
                 placeholder="Nome"
             />
-                        <CustomTextInput
+            <CustomTextInput
                 placeholder="Email"
             />
-                        <CustomTextInput
-                placeholder="senha"
+            <CustomTextInput
+                placeholder="Senha"
             />
-                        <CustomTextInput
+            <CustomTextInput
                 placeholder="Confirme a senha"
             />
             <CustomButton
