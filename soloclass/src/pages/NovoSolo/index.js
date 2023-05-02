@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View} from "react-native";
 import CustomTextInput from "../../components/CustomTextInput";
 
 import CustomButton from "../../components/CustomButton";
@@ -8,6 +8,10 @@ export default function NovoSolo(){
 
     return(
         <View style={styles.container}>
+            <CustomButton
+                title="Camera"
+                route="Camera"
+            />
             <CustomTextInput
                 placeholder="Cor do Solo"
             />
