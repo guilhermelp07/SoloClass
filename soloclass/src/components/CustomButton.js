@@ -10,7 +10,7 @@ export default function CustomButton(props) {
     return (
         <TouchableOpacity
             style={ButtonStyles.botao}
-            onPress={() => navigator.navigate(props.route)}
+            onPress={props.onPress}
         >
             <Text style={ButtonStyles.btnText}>{props.title}</Text>
         </TouchableOpacity>

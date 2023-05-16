@@ -10,6 +10,7 @@ export default function CustomTextInput(props) {
             style={styles.textInput}
             placeholder={props.placeholder}
             secureTextEntry={props.secureTextEntry}
+            onChangeText={props.onChangeText}
         />
     );
 

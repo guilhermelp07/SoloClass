@@ -30,7 +30,7 @@ export default styles = StyleSheet.create({
         backgroundColor: '#ffc'
       },
       attribute: {
-        fontSize: 22,
+        fontSize: 20,
         fontWeight:'bold',
         width: '100%',
         marginTop: 5,
@@ -56,7 +56,7 @@ export default styles = StyleSheet.create({
         borderRadius: 12
       },
       card: {
-        height: 340,
+        flex: 1,
         width: 350,
         alignContent: 'center',
         backgroundColor: '#fff',
@@ -77,9 +77,9 @@ export default styles = StyleSheet.create({
       },
       cardButton: {
         fontSize: 16,
-        color:'#8df',
+        color: '#459C9C', // color:'#8df',
         fontWeight:'bold',
-        margin: 10,
+        margin: 5,
       },
       cardText: {
         margin: 10

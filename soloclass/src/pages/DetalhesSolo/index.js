@@ -2,15 +2,15 @@ import { Image, Text, View } from "react-native"
 
 import Styles from "../../styles/Styles";
 
-export default function DetalhesSolo(route){
+export default function DetalhesSolo({route}){
     return(
         <View style={Styles.detailContainer}>
             <View style={Styles.detailsHeader}>
-                <Text style={Styles.title}>Montanhas Gélidas</Text>
+                <Text style={Styles.title}>{route.params?.title}</Text>
                 <Image
                     style={Styles.image}
                     source={{
-                        uri: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg'
+                        uri: route.params?.uri
                     }}
                 />
             </View>

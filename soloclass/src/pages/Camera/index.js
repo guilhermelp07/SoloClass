@@ -37,6 +37,7 @@ export default function CameraScreen(){
       const {status} = await Camera.requestCameraPermissionsAsync()
       if (status === 'granted') {
         // start the camera
+        Alert.alert('Access granted')
         setStartCamera(true)
       } else {
         Alert.alert('Access denied')
@@ -127,7 +128,7 @@ export default function CameraScreen(){
               left: '5%',
               top: '10%',
               backgroundColor: flashMode === 'off' ? '#000' : '#fff',
-              borderRadius: '50%',
+              borderRadius: 50,
               height: 25,
               width: 25
           }}
@@ -154,7 +155,7 @@ export default function CameraScreen(){
       onPress={__switchCamera}
       style={{
       marginTop: 20,
-      borderRadius: '50%',
+      borderRadius: 50,
       height: 25,
       width: 25
       }}
