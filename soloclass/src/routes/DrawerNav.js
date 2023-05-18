@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler';
+import { Avatar } from '@rneui/themed';
 import React from 'react';
 import { DrawerContentScrollView, DrawerItem, createDrawerNavigator } from "@react-navigation/drawer";
 import { Text, View } from 'react-native';
@@ -38,6 +39,16 @@ export const CustomDrawerComp = (props) => {
     return (
         <DrawerContentScrollView {...props}>
             <View style={{flexGrow: 2}}>
+                <View>
+                <Avatar
+    size={64}
+    rounded
+    source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
+  />
+                </View>
+
+  <Text>Josefino dos Santos</Text>
+
                 <DrawerItem
                     label="Configurações"
                     onPress={() => navigation.navigate('Configurações')}
