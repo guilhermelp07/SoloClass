@@ -10,7 +10,7 @@ export default function TextButton(props) {
     return (
         <TouchableOpacity
             style={ButtonStyles.tButton}
-            onPress={() => navigator.navigate(props.route)}
+            onPress={props.onPress}
         >
             <Text style={ButtonStyles.tButtonText}>{props.title}</Text>
         </TouchableOpacity>
