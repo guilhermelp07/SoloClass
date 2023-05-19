@@ -1,10 +1,12 @@
-import { View, StyleSheet, Text, Alert } from "react-native";
+import { View, StyleSheet, Text, Alert, Keyboard } from "react-native";
 import CustomButton from "../../components/CustomButton";
 import CustomTextInput from "../../components/CustomTextInput";
 import Styles from "../../styles/Styles";
 import { useState } from "react";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import firebase from "../../database/FirebaseConfig";
+import { getDatabase, ref, set } from "firebase/database";
+import { useNavigation } from "@react-navigation/native";
 
 export default function CadastrarUsuario(){
 
@@ -12,6 +14,8 @@ export default function CadastrarUsuario(){
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ passwordConfirmation, setPasswordConfirmation ] = useState('');
+
+    const navigator = useNavigation();
 
     function createUser(){
 
@@ -26,10 +30,26 @@ export default function CadastrarUsuario(){
         }
 
         const auth = getAuth(firebase);
+        const database = getDatabase(firebase);
+
         createUserWithEmailAndPassword(auth, email, password)
             .then((value) => {
                 console.log(value);
-                Alert.alert("Sucesso","Usuário cadastrado com sucesso!");
+                set(ref(database, 'usuarios/' + value.user.uid), {
+                    username: name,
+                    email: email,
+                    password: password
+                  })
+                    .then(() => {
+                        Alert.alert("Sucesso","Usuário cadastrado com sucesso!")
+                    })
+                    .catch((error) => alert(error));
+                setName('');
+                setEmail('');
+                setPassword('');
+                setPasswordConfirmation('');
+                Keyboard.dismiss();
+                navigator.navigate("Login");
             })
             .catch((error) => {
                 console.log(error);

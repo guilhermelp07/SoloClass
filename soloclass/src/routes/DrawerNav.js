@@ -40,14 +40,14 @@ export const CustomDrawerComp = (props) => {
         <DrawerContentScrollView {...props}>
             <View style={{flexGrow: 2}}>
                 <View>
-                <Avatar
-    size={64}
-    rounded
-    source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
-  />
+                    <Avatar
+                        size={64}
+                        rounded
+                        source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
+                    />
                 </View>
 
-  <Text>Josefino dos Santos</Text>
+                <Text>Josefino dos Santos</Text>
 
                 <DrawerItem
                     label="Configurações"

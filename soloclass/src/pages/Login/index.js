@@ -9,22 +9,22 @@ import { useNavigation } from "@react-navigation/native";
 import firebase from "../../database/FirebaseConfig";
 
 import { useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login(){
 
     const [email, setEmail] = useState('teste@gmail.com');
     const [password, setPassword] = useState('123456');
 
-    const nav = useNavigation();
+    const navigator = useNavigation();
 
     function login(){
         const auth = getAuth(firebase);
         signInWithEmailAndPassword(auth, email, password)
             .then((value) => {
                 console.log("Login com o usuário: "+value.user.email)
-                Alert.alert("Sucesso","Usuário "+value.user.email+" logado com sucesso!")
-                nav.navigate("Home");
+                // Alert.alert("Sucesso","Usuário "+value.user.email+" logado com sucesso!")
+                navigator.navigate("Home");
             })
             .catch((error) => {
                 Alert.alert("Erro","Login/senha incorreto(s)! / "+error)
@@ -54,7 +54,7 @@ export default function Login(){
             />
             <TextButton
                 title="Cadastrar-se"
-                onPress={() => nav.navigate("Cadastrar Usuário")}
+                onPress={() => navigator.navigate("Cadastrar Usuário")}
             />
         </View>
     );

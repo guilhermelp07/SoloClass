@@ -6,6 +6,7 @@ import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyA9L2NMJLzY2_ElNLA8P2o8FywM2Re7WTA",
   authDomain: "soloclass-f038d.firebaseapp.com",
+  databaseURL: "https://soloclass-f038d-default-rtdb.firebaseio.com",
   projectId: "soloclass-f038d",
   storageBucket: "soloclass-f038d.appspot.com",
   messagingSenderId: "471770393638",
