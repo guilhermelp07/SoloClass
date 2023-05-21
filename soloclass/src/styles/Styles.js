@@ -83,5 +83,10 @@ export default styles = StyleSheet.create({
       },
       cardText: {
         margin: 10
+      },
+      picker: {
+        height: 10,
+        width: 200,
+        backgroundColor:'#eee'
       }
 });
