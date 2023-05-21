@@ -8,6 +8,17 @@ export default styles = StyleSheet.create({
         backgroundColor: '#DAFFF9',
         padding: 10
       },
+      textInput: {
+        width: 270,
+        height: 50,
+        borderRadius: 5,
+        borderColor: '#aaa',
+        borderWidth: 2,
+        backgroundColor: '#fff',
+        margin: 10,
+        fontSize: 20,
+        paddingLeft: 12
+      },
       detailContainer: {
         flex:1,
         backgroundColor:'#DAFFF9',
@@ -83,5 +94,15 @@ export default styles = StyleSheet.create({
       },
       cardText: {
         margin: 10
+      },
+      picker: {
+        height: 10,
+        width: 200,
+        backgroundColor:'#eee'
+      },
+      itemTitle: {
+        margin: 4,
+        marginBottom: 10,
+        fontSize: 17
       }
 });

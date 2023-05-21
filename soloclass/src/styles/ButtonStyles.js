@@ -6,8 +6,8 @@ export default styles = StyleSheet.create({
         color: '#fff'
     },
     botao: {
-        width: 180,
-        height: 60,
+        width: 170,
+        height: 55,
         borderRadius: 12,
         alignContent: 'center',
         alignItems: 'center',
