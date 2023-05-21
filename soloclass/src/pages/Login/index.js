@@ -66,10 +66,10 @@ export default function Login(){
                 route="Home"
                 onPress={login}
             />
-            <TextButton
+            {/* <TextButton
                 title="Esqueceu a senha?"
                 route="Recuperar Senha"
-            />
+            /> */}
             <TextButton
                 title="Cadastrar-se"
                 onPress={() => navigator.navigate("Cadastrar Usuário")}
