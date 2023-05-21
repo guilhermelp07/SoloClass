@@ -4,8 +4,8 @@ import CustomTextInput from "../../components/CustomTextInput";
 
 import CustomButton from "../../components/CustomButton";
 import smartsolos from "../../services/smartsolos";
-export default function NovoSolo(){
-
+export default function NovoSolo(props){
+    const {navigation} = props;
     async function sendRequest1(){
         await smartsolos.get('health')
             .then((response) => {
@@ -100,7 +100,7 @@ export default function NovoSolo(){
         <View style={styles.container}>
             <CustomButton
                 title="Camera"
-                route="Camera"
+                onPress={()=> navigation.navigate("Camera")}
             />
             <CustomTextInput
                 placeholder="Cor do Solo"
