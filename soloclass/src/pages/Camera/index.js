@@ -4,11 +4,10 @@ import CustomTextInput from "../../components/CustomTextInput";
 import React from 'react'
 import {Camera} from 'expo-camera'
 
-
-
 import CustomButton from "../../components/CustomButton";
 export default function CameraScreen(){
-    const [startCamera,setStartCamera] = React.useState(false)
+  let camera = Camera
+    const [startCamera,setStartCamera] = React.useState(true)
     const [previewVisible, setPreviewVisible] = React.useState(false)
     const [capturedImage, setCapturedImage] = React.useState(null)
     const [flashMode, setFlashMode] = React.useState('off')
@@ -50,6 +49,7 @@ export default function CameraScreen(){
       console.log(photo)
       setPreviewVisible(true)
       setCapturedImage(photo)
+      savePhoto(photo)
     }
   
     const __retakePicture = () => {
@@ -57,10 +57,17 @@ export default function CameraScreen(){
       setPreviewVisible(false)
       __startCamera()
     }
+
+    const savePhoto = (photo) => {
+      // TODO salvar no firebase
+      // MediaLibrary.saveToLibraryAsync(photo['uri']).then(() => {
+      //     setCapturedImage(photo);
+      //     setPreviewVisible(true)
+      // });
+  }
     
   
     const CameraPreview = ({photo}) => {
-      console.log('sdsfds', photo)
       return (
         <View
           style={{
@@ -81,9 +88,8 @@ export default function CameraScreen(){
     }
   
     return (
-      
       previewVisible && capturedImage ? (
-        // <CameraPreview photo={capturedImage} savePhoto={__savePhoto} retakePicture={__retakePicture} />
+        // <CameraPreview photo={capturedImage} savePhoto={savePhoto} retakePicture={__retakePicture} />
         <CameraPreview photo={capturedImage} retakePicture={__retakePicture} />
       ) : (
         <Camera

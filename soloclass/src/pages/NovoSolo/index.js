@@ -10,8 +10,8 @@ import { pickerItems } from "../../components/ComponentData";
 import { ItemTitle } from "../../components/ItemTitle";
 import { sendRequest } from "../../services/smartsolosService";
 
-export default function NovoSolo(){
-
+export default function NovoSolo(props){
+    const {navigation} = props;
     const [ soilDrainage, setSoilDrainage ] = useState(0);
     const [ soilName, setSoilName ] = useState('');
 
@@ -40,8 +40,8 @@ export default function NovoSolo(){
             >
                 <View style={Styles.container}>
                     <CustomButton
-                        title="Camera"
-                        route="Camera"
+                      title="Camera"
+                      onPress={()=> navigation.navigate("Camera")}
                     />
 
                     <CustomTextInput
