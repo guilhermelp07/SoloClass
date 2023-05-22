@@ -101,8 +101,54 @@ export default styles = StyleSheet.create({
         backgroundColor:'#eee'
       },
       itemTitle: {
-        margin: 4,
-        marginBottom: 10,
-        fontSize: 17
+        margin: 10,
+        fontSize: 17,
+        height: 30,
+        textAlignVertical: 'center'
+      },
+      modal: {
+        backgroundColor: '#fff', //'#DAFFF9',
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        margin: 30,
+        marginTop: 90,
+        borderWidth: 2,
+        padding: 14,
+        borderColor: '#aaa',
+        shadowColor: '#000',
+        shadowRadius: 10,
+        elevation: 14
+      },
+      containerSoilProfile: {
+        flex: 0.9,
+        justifyContent: 'center',
+        alignItems: 'center',
+        // flexDirection: 'row'
+      },
+      limitForm: {
+        flexDirection: 'row',
+        margin: 0,
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'center'
+      },
+      soilProfileInput: {
+        width: 200,
+        height: 45,
+        fontSize: 18,
+        padding: 7,
+        borderWidth: 1,
+        borderRadius: 5,
+        marginTop: 20
+      },
+      soilProfileNumInput: {
+        width: 80,
+        height: 40,
+        fontSize: 18,
+        padding: 7,
+        borderWidth: 1,
+        borderRadius: 5
       }
 });

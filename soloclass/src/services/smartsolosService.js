@@ -1,33 +1,48 @@
 import smartsolosAPI from "./smartsolosAPI";
 
 export async function sendRequest(data){
-    await smartsolosAPI.post('classification', createPostRequest(data))
+  const reqBody = createPostRequest(data);
+  console.log("CORPO DA REQUISIÇÃO");
+  console.log(reqBody);
+    await smartsolosAPI.post('classification', reqBody)
         .then((response) => {
-            console.log("RETORNO DA REQUISIÇÃO POST");
-            console.log(response.config.data);
-            console.log(response.data);
+          console.log('');
+          console.log("RETORNO DA REQUISIÇÃO POST");
+          console.log(response.config.data);
+          console.log(response.data);
         })
         .catch((error) => {
             console.error(error);
         })
 }
 
+// "SIMB_HORIZ": "string",
+// "LIMITE_SUP": 0,
+// "LIMITE_INF": 0,
+
 function createPostRequest(data){
+
+  let soilProfileList = data.soilProfiles.map((value) => {
     return (
-        {
-            "items": [
-              {
-                "DRENAGEM": data.soilDrainage,
-                "ID_PONTO": data.soilName,
-                "HORIZONTES": [
-                  {
-                    "SIMB_HORIZ": "string",
-                    "LIMITE_SUP": 80,
-                    "LIMITE_INF": 1110
-                  }
-                ]
-              }
-            ]
-        }
+      {
+        "SIMB_HORIZ": value.profileName,
+        "LIMITE_SUP": value.upperLimit,
+        "LIMITE_INF": value.lowerLimit
+      }
     );
+  });
+  
+  console.log(soilProfileList);
+
+  return (
+      {
+          "items": [
+            {
+              "ID_PONTO": data.soilName,
+              "DRENAGEM": data.soilDrainage,
+              "HORIZONTES": soilProfileList
+            }
+          ]
+      }
+  );
 }

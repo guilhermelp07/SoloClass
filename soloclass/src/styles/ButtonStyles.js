@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default styles = StyleSheet.create({
     btnText: {
-        fontSize: 26,
+        fontSize: 24,
         color: '#fff'
     },
     botao: {

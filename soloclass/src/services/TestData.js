@@ -71,3 +71,9 @@ export const smartsolosPostTest = {
         }
     ]
 }
+
+export const soilProfilesTest = [
+    {id: 1, name: "Chão", upperLimit: 10, lowerLimit: 20},
+    {id: 2, name: "Sei lá", upperLimit: 20, lowerLimit: 50},
+    {id: 3, name: "Camada inferior", upperLimit: 20, lowerLimit: 50}
+];
