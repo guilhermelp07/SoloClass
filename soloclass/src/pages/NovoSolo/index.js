@@ -82,13 +82,13 @@ export default function NovoSolo(props){
                     />
 
                     <ItemTitle text="Drenagem do Solo" />
-                    <CustomPicker
+                   <CustomPicker
                         prompt="Nível de drenagem"
                         selectedValue={soilDrainage}
                         onValueChange={(itemValue, itemIndex) => setSoilDrainage(itemValue)}
                         items={pickerItems}
                     />
-
+                    
                     <CustomButton
                         title="Perfis de Solo"
                         onPress={openModal}
