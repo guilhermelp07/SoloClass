@@ -5,7 +5,6 @@ import smartsolosAPI from "../../services/smartsolosAPI";
 import { useState } from "react";
 import CustomPicker from "../../components/CustomPicker";
 import Styles from "../../styles/Styles";
-import { smartsolosPostTest } from "../../services/TestData";
 import { pickerItems } from "../../components/ComponentData";
 import { ItemTitle } from "../../components/ItemTitle";
 import { sendRequest } from "../../services/smartsolosService";
@@ -50,11 +49,12 @@ export default function NovoSolo(props){
                     />
 
                     <ItemTitle text="Drenagem do Solo" />
-                    <CustomPicker
+                   <CustomPicker
                         prompt="Nível de drenagem"
                         selectedValue={soilDrainage}
                         onValueChange={(itemValue, itemIndex) => setSoilDrainage(itemValue)}
                         items={pickerItems}
+                        mode="dropdown"
                     />
 
                     <CustomButton

@@ -100,6 +100,11 @@ export default styles = StyleSheet.create({
         width: 200,
         backgroundColor:'#eee'
       },
+      pickerColor: {
+        height: 200,
+        width: 200,
+        backgroundColor:'#eee'
+      },
       itemTitle: {
         margin: 4,
         marginBottom: 10,

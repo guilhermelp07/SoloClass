@@ -1,10 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, Text, View, TouchableOpacity,ImageBackground} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity,ImageBackground,SafeAreaView} from "react-native";
 import CustomTextInput from "../../components/CustomTextInput";
 import React from 'react'
 import {Camera} from 'expo-camera'
 
 import CustomButton from "../../components/CustomButton";
+import CustomPicker from "../../components/CustomPicker";
+import CustomPickerColor from "../../components/CustomPickerColor";
+import { pickerColors } from "../../components/ComponentData";
 export default function CameraScreen(){
   let camera = Camera
     const [startCamera,setStartCamera] = React.useState(true)
@@ -12,6 +15,8 @@ export default function CameraScreen(){
     const [capturedImage, setCapturedImage] = React.useState(null)
     const [flashMode, setFlashMode] = React.useState('off')
     const [cameraType, setCameraType] = React.useState(Camera.Constants.Type.back)
+    const [ corDoSolo, setCorDoSolo ] = React.useState(0)
+
     
     const __handleFlashMode = () => {
      if (flashMode === 'on') {
@@ -74,15 +79,23 @@ export default function CameraScreen(){
             backgroundColor: 'transparent',
             flex: 1,
             width: '100%',
-            height: '100%'
+            height: '100%',
           }}
         >
-          <ImageBackground
+                <ImageBackground
             source={{uri: photo && photo.uri}}
             style={{
               flex: 1
             }}
-          />
+          ><View>   
+          <CustomPickerColor
+          prompt="Cor do solo"
+          selectedValue={corDoSolo}
+          onValueChange={(itemValue, itemIndex) => setCorDoSolo(itemValue)}
+          items={pickerColors}
+      />
+      </View></ImageBackground>
+
         </View>
       )
     }
@@ -90,7 +103,7 @@ export default function CameraScreen(){
     return (
       previewVisible && capturedImage ? (
         // <CameraPreview photo={capturedImage} savePhoto={savePhoto} retakePicture={__retakePicture} />
-        <CameraPreview photo={capturedImage} retakePicture={__retakePicture} />
+        <CameraPreview photo={capturedImage} retakePicture={__retakePicture}></CameraPreview>
       ) : (
         <Camera
         type={cameraType}
@@ -181,13 +194,3 @@ export default function CameraScreen(){
       )
     )
   }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#DAFFF9',
-        padding: 10
-      }
-});
