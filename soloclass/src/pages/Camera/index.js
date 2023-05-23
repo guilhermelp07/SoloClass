@@ -82,20 +82,23 @@ export default function CameraScreen(){
             height: '100%',
           }}
         >
-                <ImageBackground
-            source={{uri: photo && photo.uri}}
-            style={{
-              flex: 1
-            }}
-          ><View>   
-          <CustomPickerColor
-          prompt="Cor do solo"
-          selectedValue={corDoSolo}
-          onValueChange={(itemValue, itemIndex) => setCorDoSolo(itemValue)}
-          items={pickerColors}
-      />
-      </View></ImageBackground>
-
+          <ImageBackground
+              source={{uri: photo && photo.uri}}
+              style={{
+                flex: 1
+              }}
+          >
+          <Text style={{fontSize: 40}}>Cor: {corDoSolo}</Text>
+          <View>
+            <CustomPickerColor
+              prompt="Cor do solo"
+              selectedValue={corDoSolo}
+              onValueChange={(itemValue, itemIndex) => setCorDoSolo(itemValue)}
+              items={pickerColors}
+              mode="dropdown"
+            />
+          </View>
+            </ImageBackground>
         </View>
       )
     }

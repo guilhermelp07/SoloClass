@@ -11,13 +11,13 @@ export const pickerItems = [
 ];
 
 export const pickerColors = [
-    {key: 0, color: "antiquewhite"},
-    {key: 1, color: "beige"},
-    {key: 2, color: "bisque"},
-    {key: 3, color: "blanchedalmond"},
-    {key: 4, color: "burlywood"},
-    {key: 5, color: "chocolate"},
-    {key: 6, color: "darkgoldenrod"},
-    {key: 7, color: "darksalmon"},
-    {key: 8, color: "indianred"}
+    {key: 0, color: "#160a00"}, // MATIZ: 5YR, VALOR: 3, CROMA: 6
+    {key: 1, color: "#311c00"}, // MATIZ: 5YR, VALOR: 4, CROMA: 8
+    {key: 2, color: "#5d2000"}, // MATIZ: 5YR, VALOR: 2.5, CROMA: 4
+    {key: 3, color: "#734000"}, // MATIZ: 5YR, VALOR: 4, CROMA: 6
+    {key: 4, color: "#aa6e3e"}, // MATIZ: 5YR, VALOR: 5, CROMA: 6
+    {key: 5, color: "#bb7a12"}, // MATIZ: 5YR, VALOR: 7, CROMA: 14
+    {key: 6, color: "#ab7d62"}, // MATIZ: 5YR, VALOR: 6, CROMA: 8
+    {key: 7, color: "#ecc881"}, // MATIZ: 5YR, VALOR: 7, CROMA: 8
+    {key: 8, color: "#ffe2a4"}  // MATIZ: 5YR, VALOR: 9, CROMA: 2
 ];

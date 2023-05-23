@@ -1,3 +1,4 @@
+import { saveSoil } from "../database/databaseService";
 import smartsolosAPI from "./smartsolosAPI";
 
 export async function sendRequest(data){
@@ -10,15 +11,13 @@ export async function sendRequest(data){
           console.log("RETORNO DA REQUISIÇÃO POST");
           console.log(response.config.data);
           console.log(response.data);
+          
+          saveSoil(response, data.soilDrainage);
         })
         .catch((error) => {
             console.error(error);
         })
 }
-
-// "SIMB_HORIZ": "string",
-// "LIMITE_SUP": 0,
-// "LIMITE_INF": 0,
 
 function createPostRequest(data){
 

@@ -7,6 +7,7 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import firebase from "../../database/FirebaseConfig";
 import { getDatabase, ref, set } from "firebase/database";
 import { useNavigation } from "@react-navigation/native";
+import { saveUser } from "../../database/databaseService";
 
 export default function CadastrarUsuario(){
 
@@ -30,30 +31,20 @@ export default function CadastrarUsuario(){
         }
 
         const auth = getAuth(firebase);
-        const database = getDatabase(firebase);
-
+        
         createUserWithEmailAndPassword(auth, email, password)
             .then((value) => {
-                console.log(value);
-                set(ref(database, 'usuarios/' + value.user.uid), {
-                    username: name,
-                    email: email,
-                    password: password
-                  })
-                    .then(() => {
-                        Alert.alert("Sucesso","Usuário cadastrado com sucesso!")
-                    })
-                    .catch((error) => alert(error));
-                setName('');
-                setEmail('');
-                setPassword('');
-                setPasswordConfirmation('');
+                console.log('');
+                console.log('USUARIO CRIADO');
+                console.log(value.user);
+
+                saveUser(value.user, name);
+
                 Keyboard.dismiss();
                 navigator.navigate("Login");
             })
             .catch((error) => {
-                console.log(error);
-                alert(error);
+                console.error(error);
             })
     }
 
