@@ -7,7 +7,6 @@ export async function sendRequest(data){
   console.log(reqBody);
     await smartsolosAPI.post('classification', reqBody)
         .then((response) => {
-          console.log('');
           console.log("RETORNO DA REQUISIÇÃO POST");
           console.log(response.config.data);
           console.log(response.data);
@@ -16,7 +15,7 @@ export async function sendRequest(data){
         })
         .catch((error) => {
             console.error(error);
-        })
+        });
 }
 
 function createPostRequest(data){
@@ -26,7 +25,10 @@ function createPostRequest(data){
       {
         "SIMB_HORIZ": value.profileName,
         "LIMITE_SUP": value.upperLimit,
-        "LIMITE_INF": value.lowerLimit
+        "LIMITE_INF": value.lowerLimit,
+        "COR_UMIDA_MATIZ": data.soilColor.MATIZ,
+        "COR_UMIDA_VALOR": data.soilColor.VALOR,
+        "COR_UMIDA_CROMA": data.soilColor.CROMA,
       }
     );
   });

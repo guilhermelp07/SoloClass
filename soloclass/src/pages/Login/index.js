@@ -51,7 +51,7 @@ export default function Login(){
 
     return(
         <View style={Styles.container}>
-            <Text style={Styles.logo}>SoloClass : {email} / {password}</Text>
+            <Text style={Styles.logo}>SoloClass</Text>
             <CustomTextInput
                 placeholder="Email"
                 onChangeText={(text) => setEmail(text)}

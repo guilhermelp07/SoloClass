@@ -11,13 +11,14 @@ export const pickerItems = [
 ];
 
 export const pickerColors = [
-    {key: 0, color: "#160a00"}, // MATIZ: 5YR, VALOR: 3, CROMA: 6
-    {key: 1, color: "#311c00"}, // MATIZ: 5YR, VALOR: 4, CROMA: 8
-    {key: 2, color: "#5d2000"}, // MATIZ: 5YR, VALOR: 2.5, CROMA: 4
-    {key: 3, color: "#734000"}, // MATIZ: 5YR, VALOR: 4, CROMA: 6
-    {key: 4, color: "#aa6e3e"}, // MATIZ: 5YR, VALOR: 5, CROMA: 6
-    {key: 5, color: "#bb7a12"}, // MATIZ: 5YR, VALOR: 7, CROMA: 14
-    {key: 6, color: "#ab7d62"}, // MATIZ: 5YR, VALOR: 6, CROMA: 8
-    {key: 7, color: "#ecc881"}, // MATIZ: 5YR, VALOR: 7, CROMA: 8
-    {key: 8, color: "#ffe2a4"}  // MATIZ: 5YR, VALOR: 9, CROMA: 2
+    { key: 0, color: "#1a0f0c", MATIZ: "5YR", VALOR: 2.5, CROMA: 4},
+    { key: 1, color: "#3e1b0e", MATIZ: "5YR", VALOR: 3, CROMA: 6 },
+    { key: 2, color: "#68290b", MATIZ: "5YR", VALOR: 4, CROMA: 6 },
+    { key: 3, color: "#5d3826", MATIZ: "5YR", VALOR: 4, CROMA: 4 },
+    { key: 4, color: "#8d3708", MATIZ: "5YR", VALOR: 5, CROMA: 12 },
+    { key: 5, color: "#8a4112", MATIZ: "5YR", VALOR: 5, CROMA: 8 },
+    { key: 6, color: "#ab5c18", MATIZ: "5YR", VALOR: 6, CROMA: 10 },
+    { key: 7, color: "#97785a", MATIZ: "5YR", VALOR: 6, CROMA: 4 },
+    { key: 8, color: "#b97528", MATIZ: "5YR", VALOR: 7, CROMA: 10 },
+    { key: 9, color: "#c29e73", MATIZ: "5YR", VALOR: 8, CROMA: 6 }
 ];

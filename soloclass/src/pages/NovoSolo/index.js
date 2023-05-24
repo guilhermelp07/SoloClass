@@ -1,16 +1,16 @@
 import { View, Text, ScrollView, Modal, TextInput, TouchableOpacity, FlatList, Alert } from "react-native";
 import CustomTextInput from "../../components/CustomTextInput";
 import CustomButton from "../../components/CustomButton";
-import smartsolosAPI from "../../services/smartsolosAPI";
 import { useState } from "react";
 import CustomPicker from "../../components/CustomPicker";
 import Styles from "../../styles/Styles";
-import { smartsolosPostTest, soilProfilesTest } from "../../services/TestData";
 import { pickerItems } from "../../components/ComponentData";
+import { pickerColors } from "../../components/ComponentData";
 import { ItemTitle } from "../../components/ItemTitle";
 import { sendRequest } from "../../services/smartsolosService";
 import { SoilProfile } from "../../components/SoilProfile";
-import { StyleSheet } from "react-native";
+import TextButton from "../../components/TextButton";
+import ButtonStyles from "../../styles/ButtonStyles";
 
 export default function NovoSolo(props){
     const {navigation} = props;
@@ -20,9 +20,8 @@ export default function NovoSolo(props){
     const [ profileName, setProfileName ] = useState('');
     const [ lowerLimit, setLowerLimit ] = useState(0);
     const [ upperLimit, setUpperLimit ] = useState(0);
-    const [ soilProfileList, setSoilProfileList ] = useState([
-        //{id: 0, profileName: "Teste perfil", lowerLimit: 0, upperLimit: 0}, {id: 1, profileName: "perfil 2", lowerLimit: 0, upperLimit: 0}
-    ]);
+    const [ soilProfileList, setSoilProfileList ] = useState([]);
+    const [ colorIndex, setColorIndex ] = useState(0);
 
     function openModal(){setModalVisible(true);}
 
@@ -37,43 +36,67 @@ export default function NovoSolo(props){
         sendRequest({
             soilDrainage: soilDrainage,
             soilName: soilName,
-            soilProfiles: soilProfileList
+            soilProfiles: soilProfileList,
+            soilColor: getSoilColor()
+        });
+    }
+
+    function getSoilColor(){
+        return ({
+            MATIZ: pickerColors[colorIndex].MATIZ,
+            VALOR: pickerColors[colorIndex].VALOR,
+            CROMA: pickerColors[colorIndex].CROMA
         });
     }
 
     function addItem(){
         if(profileName === ''){
-            Alert.alert("Erro","Favor informar o nome do perfil!");
+            Alert.alert("Favor informar o nome do perfil!");
             return;
         }
-        soilProfileList.push({
+
+        let index = soilProfileList.length;
+
+        soilProfileList[index] = {
             id: soilProfileList.length,
             profileName: profileName,
             lowerLimit: lowerLimit,
             upperLimit: upperLimit
-        });
+        }
+        // soilProfileList.push({
+        //     id: soilProfileList.length,
+        //     profileName: profileName,
+        //     lowerLimit: lowerLimit,
+        //     upperLimit: upperLimit
+        // });
+        console.log("criou o elemento no index "+index)
         setSoilProfileList(soilProfileList);
         closeModal();
     }
 
     function deleteItem(id){
-        // alert(id+" - tamanho da lista: "+soilProfileList.length);
-        soilProfileList.splice(id, 1);
+        for(let i=0; i<soilProfileList.length; i++){
+            if(soilProfileList[i].id === id){
+                soilProfileList.splice(i, 1);
+                console.log("deletou o elemento com id "+id+", posição "+i)
+            }
+        }
         setSoilProfileList(soilProfileList);
-        // alert("tamanho da lista: "+soilProfileList.length);
         closeModal();
     }
 
+    function openCamera(){ navigation.navigate("Camera", {setColorIndex: setColorIndex}); }
+
     return(
         <View style={Styles.container}>
-            
-            <ScrollView
+
+            {/* <ScrollView
                 showsVerticalScrollIndicator={false}
-            >
+            > */}
                 <View style={Styles.container}>
                     <CustomButton
-                      title="Camera"
-                      onPress={()=> navigation.navigate("Camera")}
+                      title="Câmera"
+                      onPress={openCamera}
                     />
 
                     <CustomTextInput
@@ -109,12 +132,13 @@ export default function NovoSolo(props){
                                 style={Styles.modal}
                             >
                                 <View style={Styles.containerSoilProfile}>
-                                    <TouchableOpacity
+
+                                    <TextButton
+                                        title="Fechar"
                                         style={{position: 'relative'}}
+                                        textStyle={{fontSize: 16, color: /*'#459C9C'*/'#e40', fontWeight: 'bold'}}
                                         onPress={closeModal}
-                                    >
-                                        <Text style={{fontSize: 16, color: '#459C9C'}}>Fechar</Text>
-                                    </TouchableOpacity>
+                                    />
                                     <Text style={Styles.title}> Perfis do Solo </Text>
                                     <TextInput
                                         style={Styles.soilProfileInput}
@@ -138,7 +162,7 @@ export default function NovoSolo(props){
                                         />
                                     </View>
                                     <TouchableOpacity
-                                        style={styles.btnAdd}
+                                        style={ButtonStyles.btnAdd}
                                         onPress={addItem}
                                     >
                                         <Text style={{fontSize: 19, color: '#fff'}}>Adicionar perfil</Text>
@@ -150,29 +174,17 @@ export default function NovoSolo(props){
                                     renderItem={({item}) => 
                                         <SoilProfile
                                             data={item}
-                                            edit={() => alert("edit")}
                                             delete={() => deleteItem(item.id)}
                                         />}
                                     showsVerticalScrollIndicator={false}
+                                    scrollEnabled={false}
                                 />
                             </View>
                         </ScrollView>
                     </Modal>
                     
                 </View>
-            </ScrollView>
+            {/* </ScrollView> */}
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    btnAdd: {
-        width: 160,
-        height: 45,
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#459C9C',
-        margin: 5
-    }
-});

@@ -9,10 +9,10 @@ export default function TextButton(props) {
 
     return (
         <TouchableOpacity
-            style={ButtonStyles.tButton}
+            style={props.style ? props.style : ButtonStyles.tButton}
             onPress={props.onPress}
         >
-            <Text style={ButtonStyles.tButtonText}>{props.title}</Text>
+            <Text style={props.textStyle ? props.textStyle : ButtonStyles.tButtonText}>{props.title}</Text>
         </TouchableOpacity>
     );
 

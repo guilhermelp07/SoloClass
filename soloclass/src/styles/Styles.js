@@ -127,12 +127,13 @@ export default styles = StyleSheet.create({
         elevation: 14
       },
       containerSoilProfile: {
-        flex: 0.9,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         // flexDirection: 'row'
       },
       limitForm: {
+        flex: 1,
         flexDirection: 'row',
         margin: 0,
         alignItems: 'center',

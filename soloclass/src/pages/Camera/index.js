@@ -1,15 +1,12 @@
-import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, Text, View, TouchableOpacity,ImageBackground,SafeAreaView} from "react-native";
-import CustomTextInput from "../../components/CustomTextInput";
+import { Text, View, TouchableOpacity,ImageBackground } from "react-native";
 import React from 'react'
 import {Camera} from 'expo-camera'
-
-import CustomButton from "../../components/CustomButton";
-import CustomPicker from "../../components/CustomPicker";
 import CustomPickerColor from "../../components/CustomPickerColor";
 import { pickerColors } from "../../components/ComponentData";
-export default function CameraScreen(){
-  let camera = Camera
+export default function CameraScreen({route}){
+
+    const setColorIndex = route.params.setColorIndex;
+    let camera = Camera
     const [startCamera,setStartCamera] = React.useState(true)
     const [previewVisible, setPreviewVisible] = React.useState(false)
     const [capturedImage, setCapturedImage] = React.useState(null)
@@ -88,12 +85,14 @@ export default function CameraScreen(){
                 flex: 1
               }}
           >
-          <Text style={{fontSize: 40}}>Cor: {corDoSolo}</Text>
           <View>
             <CustomPickerColor
               prompt="Cor do solo"
               selectedValue={corDoSolo}
-              onValueChange={(itemValue, itemIndex) => setCorDoSolo(itemValue)}
+              onValueChange={(itemValue, itemIndex) => {
+                setCorDoSolo(itemValue)
+                setColorIndex(itemIndex)
+              }}
               items={pickerColors}
               mode="dropdown"
             />

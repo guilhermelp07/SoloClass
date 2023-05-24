@@ -27,5 +27,14 @@ export default styles = StyleSheet.create({
     tButtonText: {
         fontSize: 15,
         color: '#459C9C'
+    },
+    btnAdd: {
+        width: 160,
+        height: 45,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#459C9C',
+        margin: 5
     }
 });
