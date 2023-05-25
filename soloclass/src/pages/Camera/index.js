@@ -6,6 +6,7 @@ import { pickerColors } from "../../components/ComponentData";
 export default function CameraScreen({route}){
 
     const setColorIndex = route.params.setColorIndex;
+    const setImagePath = route.params.setImagePath;
     let camera = Camera
     const [startCamera,setStartCamera] = React.useState(true)
     const [previewVisible, setPreviewVisible] = React.useState(false)
@@ -66,6 +67,7 @@ export default function CameraScreen({route}){
       //     setCapturedImage(photo);
       //     setPreviewVisible(true)
       // });
+      setImagePath(photo['uri'])
   }
     
   

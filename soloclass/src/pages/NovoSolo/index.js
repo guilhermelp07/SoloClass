@@ -22,6 +22,7 @@ export default function NovoSolo(props){
     const [ upperLimit, setUpperLimit ] = useState(0);
     const [ soilProfileList, setSoilProfileList ] = useState([]);
     const [ colorIndex, setColorIndex ] = useState(0);
+    const [ imagePath, setImagePath ] = useState(0);
 
     function openModal(){setModalVisible(true);}
 
@@ -37,7 +38,8 @@ export default function NovoSolo(props){
             soilDrainage: soilDrainage,
             soilName: soilName,
             soilProfiles: soilProfileList,
-            soilColor: getSoilColor()
+            soilColor: getSoilColor(),
+            imagePath:imagePath
         });
     }
 
@@ -85,7 +87,7 @@ export default function NovoSolo(props){
         closeModal();
     }
 
-    function openCamera(){ navigation.navigate("Camera", {setColorIndex: setColorIndex}); }
+    function openCamera(){ navigation.navigate("Camera", {setColorIndex: setColorIndex,setImagePath:setImagePath}); }
 
     return(
         <View style={Styles.container}>
