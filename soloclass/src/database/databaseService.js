@@ -15,7 +15,7 @@ export function saveUser(user, username){
     .catch((error) => console.error(error));
 }
 
-export function saveSoil(response, soilDrainage){
+export function saveSoil(response, soilDrainage,imagePath){
 
     const item = response.data.items[0];
 
@@ -27,7 +27,8 @@ export function saveSoil(response, soilDrainage){
         subOrdem: item.SUBORDEM,
         grupo: item.GDE_GRUPO,
         subGrupo: item.SUBGRUPO,
-        drenagem: soilDrainage
+        drenagem: soilDrainage,
+        imagePath: imagePath
     })
     .then(() => Alert.alert("","Solo classificado com sucesso!"))
     .catch((error) => console.log(error));

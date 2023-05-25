@@ -11,7 +11,7 @@ export async function sendRequest(data){
           console.log(response.config.data);
           console.log(response.data);
           
-          saveSoil(response, data.soilDrainage);
+          saveSoil(response, data.soilDrainage,data.imagePath);
         })
         .catch((error) => {
             console.error(error);
