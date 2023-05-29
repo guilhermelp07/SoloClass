@@ -21,12 +21,12 @@ export default function CadastrarUsuario(){
     function createUser(){
 
         if(!(name.length > 0 && email.length > 0 && password.length > 0 && passwordConfirmation.length > 0)){
-            Alert.alert("Erro","Favor preencher todos os campos!")
+            Alert.alert("","Favor preencher todos os campos!")
             return;
         }
 
         if(password !== passwordConfirmation){
-            Alert.alert("Erro","As senhas não batem!")
+            Alert.alert("","As senhas não batem!")
             return;
         }
 

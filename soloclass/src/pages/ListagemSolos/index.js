@@ -1,21 +1,26 @@
-import { FlatList, Text, View } from "react-native"
-
+import { FlatList, View } from "react-native"
 import Styles from "../../styles/Styles";
-import { Card } from "@rneui/themed";
 import CustomCard from "../../components/CustomCard";
+import { getSoils } from "../../database/databaseService";
+import { useEffect, useState } from "react";
 
 export default function ListagemSolos(){
 
-    const solos = [
-        {id: 1, title: "Solo arenoso", text: "Tem consistência granulosa como a areia, é permeável à água. Comum na região nordeste do Brasil.", uri: "https://images.educamaisbrasil.com.br/content/banco_de_imagens/guia-de-estudo/D/tipos-de-solo-arenoso.jpg"},
-        {id: 2, title: "Solo argiloso", text: "Tem consistência fina e é impermeável à água. Comum em alguns estados da região sul e região sudeste do Brasil.", uri: "https://images.educamaisbrasil.com.br/content/banco_de_imagens/guia-de-estudo/D/tipos-de-solo-argiloso.jpg"},
-        {id: 3, title: "Solo calcário", text: "Formado por partículas de rochas, é seco e esquenta muito quando recebe a luz do sol. Comum em regiões de deserto.", uri: "https://images.educamaisbrasil.com.br/content/banco_de_imagens/guia-de-estudo/D/tipos-de-solo-calcario.jpg"}
-    ];
+    let [ soilList ] = useState([]);
+
+    // Ao renderizar a tela, buscará os dados.
+    useEffect(() => {
+        getSoils(addSoil);
+    })
+
+    function addSoil(soilData){
+        soilList.push(soilData);
+    }
 
     return(
         <View style={Styles.container}>
             <FlatList
-                data={solos}
+                data={soilList}
                 keyExtractor={(item) => item.id}
                 renderItem={({item}) => <CustomCard dados={item}/>}
                 showsVerticalScrollIndicator={false}

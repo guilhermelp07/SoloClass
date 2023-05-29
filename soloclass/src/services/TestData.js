@@ -77,3 +77,9 @@ export const soilProfilesTest = [
     {id: 2, name: "Sei lá", upperLimit: 20, lowerLimit: 50},
     {id: 3, name: "Camada inferior", upperLimit: 20, lowerLimit: 50}
 ];
+
+export const solosTest = [
+    {id: 1, title: "Solo arenoso", text: "Tem consistência granulosa como a areia, é permeável à água. Comum na região nordeste do Brasil.", uri: "https://images.educamaisbrasil.com.br/content/banco_de_imagens/guia-de-estudo/D/tipos-de-solo-arenoso.jpg"},
+    {id: 2, title: "Solo argiloso", text: "Tem consistência fina e é impermeável à água. Comum em alguns estados da região sul e região sudeste do Brasil.", uri: "https://images.educamaisbrasil.com.br/content/banco_de_imagens/guia-de-estudo/D/tipos-de-solo-argiloso.jpg"},
+    {id: 3, title: "Solo calcário", text: "Formado por partículas de rochas, é seco e esquenta muito quando recebe a luz do sol. Comum em regiões de deserto.", uri: "https://images.educamaisbrasil.com.br/content/banco_de_imagens/guia-de-estudo/D/tipos-de-solo-calcario.jpg"}
+];

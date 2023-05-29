@@ -11,6 +11,7 @@ import { sendRequest } from "../../services/smartsolosService";
 import { SoilProfile } from "../../components/SoilProfile";
 import TextButton from "../../components/TextButton";
 import ButtonStyles from "../../styles/ButtonStyles";
+import LoadAnimation from "../../components/LoadAnimation";
 
 export default function NovoSolo(props){
     const {navigation} = props;
@@ -23,6 +24,7 @@ export default function NovoSolo(props){
     const [ soilProfileList, setSoilProfileList ] = useState([]);
     const [ colorIndex, setColorIndex ] = useState(0);
     const [ imagePath, setImagePath ] = useState(0);
+    const [ loaderVisible, setLoaderVisible ] = useState(false);
 
     function openModal(){setModalVisible(true);}
 
@@ -34,13 +36,14 @@ export default function NovoSolo(props){
     }
 
     async function newSoil(){
+        setLoaderVisible(true);
         sendRequest({
             soilDrainage: soilDrainage,
             soilName: soilName,
             soilProfiles: soilProfileList,
             soilColor: getSoilColor(),
             imagePath:imagePath
-        });
+        }, setLoaderVisible);
     }
 
     function getSoilColor(){
@@ -53,7 +56,7 @@ export default function NovoSolo(props){
 
     function addItem(){
         if(profileName === ''){
-            Alert.alert("Favor informar o nome do perfil!");
+            Alert.alert("","Favor informar o nome do perfil!");
             return;
         }
 
@@ -65,13 +68,8 @@ export default function NovoSolo(props){
             lowerLimit: lowerLimit,
             upperLimit: upperLimit
         }
-        // soilProfileList.push({
-        //     id: soilProfileList.length,
-        //     profileName: profileName,
-        //     lowerLimit: lowerLimit,
-        //     upperLimit: upperLimit
-        // });
-        console.log("criou o elemento no index "+index)
+
+        console.log("criou o elemento no index "+index);
         setSoilProfileList(soilProfileList);
         closeModal();
     }
@@ -87,14 +85,18 @@ export default function NovoSolo(props){
         closeModal();
     }
 
-    function openCamera(){ navigation.navigate("Camera", {setColorIndex: setColorIndex,setImagePath:setImagePath}); }
+    function openCamera(){
+        navigation.navigate("Camera", {
+            setColorIndex: setColorIndex,
+            setImagePath:setImagePath
+        });
+    }
 
     return(
         <View style={Styles.container}>
 
-            {/* <ScrollView
-                showsVerticalScrollIndicator={false}
-            > */}
+            <LoadAnimation visible={loaderVisible}/>
+
                 <View style={Styles.container}>
                     <CustomButton
                       title="Câmera"
@@ -186,7 +188,6 @@ export default function NovoSolo(props){
                     </Modal>
                     
                 </View>
-            {/* </ScrollView> */}
         </View>
     );
 }

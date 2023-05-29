@@ -53,10 +53,10 @@ export const CustomDrawerComp = (props) => {
                     <Text style={{marginTop:8, fontSize:15}}>Teste</Text>
                 </View>
 
-                {/* <DrawerItem
+                <DrawerItem
                     label="Configurações"
                     onPress={() => navigation.navigate('Configurações')}
-                /> */}
+                />
                 <DrawerItem
                     label="Sair"
                     onPress={sair}
