@@ -13,7 +13,7 @@ export default function CameraScreen({route}){
     const [capturedImage, setCapturedImage] = React.useState(null)
     const [flashMode, setFlashMode] = React.useState('off')
     const [cameraType, setCameraType] = React.useState(Camera.Constants.Type.back)
-    const [ corDoSolo, setCorDoSolo ] = React.useState(0)
+    const [ corDoSolo, setCorDoSolo ] = React.useState(0);
 
     
     const __handleFlashMode = () => {
@@ -49,7 +49,7 @@ export default function CameraScreen({route}){
     const __takePicture = async () => {
       if (!camera) return
       const photo = await camera.takePictureAsync()
-      console.log(photo)
+      console.log(photo['uri'])
       setPreviewVisible(true)
       setCapturedImage(photo)
       savePhoto(photo)
@@ -62,12 +62,8 @@ export default function CameraScreen({route}){
     }
 
     const savePhoto = (photo) => {
-      // TODO salvar no firebase
-      // MediaLibrary.saveToLibraryAsync(photo['uri']).then(() => {
-      //     setCapturedImage(photo);
-      //     setPreviewVisible(true)
-      // });
-      setImagePath(photo['uri'])
+
+      setImagePath(photo['uri']);
   }
     
   

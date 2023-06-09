@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Modal, TextInput, TouchableOpacity, FlatList, Alert } from "react-native";
+import { View, Text, ScrollView, Modal, TextInput, TouchableOpacity, FlatList, Alert, Keyboard } from "react-native";
 import CustomTextInput from "../../components/CustomTextInput";
 import CustomButton from "../../components/CustomButton";
 import { useState } from "react";
@@ -12,19 +12,23 @@ import { SoilProfile } from "../../components/SoilProfile";
 import TextButton from "../../components/TextButton";
 import ButtonStyles from "../../styles/ButtonStyles";
 import LoadAnimation from "../../components/LoadAnimation";
+import DataModal from "../../components/DataModal";
+import { getResult } from "../../database/databaseService";
 
 export default function NovoSolo(props){
     const {navigation} = props;
     const [ soilDrainage, setSoilDrainage ] = useState(0);
-    const [ soilName, setSoilName ] = useState('');
+    const [ soilName, setSoilName ] = useState("");
     const [ modalVisible, setModalVisible ] = useState(false);
     const [ profileName, setProfileName ] = useState('');
     const [ lowerLimit, setLowerLimit ] = useState(0);
     const [ upperLimit, setUpperLimit ] = useState(0);
     const [ soilProfileList, setSoilProfileList ] = useState([]);
     const [ colorIndex, setColorIndex ] = useState(0);
-    const [ imagePath, setImagePath ] = useState(0);
+    const [ imagePath, setImagePath ] = useState("");
     const [ loaderVisible, setLoaderVisible ] = useState(false);
+    const [ modalRetornoVisible, setModalRetornoVisible ] = useState(false);
+    const [ dadosRetorno ] = useState({});
 
     function openModal(){setModalVisible(true);}
 
@@ -36,14 +40,18 @@ export default function NovoSolo(props){
     }
 
     async function newSoil(){
+        if(soilName === ""){
+            Alert.alert("","Favor informar o nome do solo!");
+            return;
+        }
         setLoaderVisible(true);
         sendRequest({
             soilDrainage: soilDrainage,
             soilName: soilName,
             soilProfiles: soilProfileList,
             soilColor: getSoilColor(),
-            imagePath:imagePath
-        }, setLoaderVisible);
+            imagePath: imagePath
+        }, setLoaderVisible, showResult);
     }
 
     function getSoilColor(){
@@ -92,7 +100,40 @@ export default function NovoSolo(props){
         });
     }
 
-    return(
+    function closeDataModal(){
+        setModalRetornoVisible(false);
+    }
+
+    function showResult(){
+        getResult(soilName, setDadosRetorno, setModalRetornoVisible);
+        resetStates();
+    }
+
+    function setDadosRetorno(data){
+        console.log("setDadosRetorno");
+        console.log(data);
+        console.log(data.drenagem);
+
+        dadosRetorno.nomeSolo = data.nomeSolo
+        dadosRetorno.ordem = data.ordem
+        dadosRetorno.subOrdem = data.subOrdem
+        dadosRetorno.grupo = data.grupo
+        dadosRetorno.subGrupo = data.subGrupo
+        dadosRetorno.drenagem = data.drenagem
+    }
+
+    function resetStates(){
+        setSoilName("");
+        setProfileName("");
+        setSoilDrainage(0);
+        setLowerLimit(0);
+        setUpperLimit(0);
+        setSoilProfileList([]);
+        setColorIndex(0);
+        setImagePath("");
+    }
+
+    return (
         <View style={Styles.container}>
 
             <LoadAnimation visible={loaderVisible}/>
@@ -106,10 +147,12 @@ export default function NovoSolo(props){
                     <CustomTextInput
                         placeholder="Nome do solo"
                         onChangeText={(text) => setSoilName(text)}
+                        value={soilName}
+                        // onBlur={() => {alert("opa")}}
                     />
 
                     <ItemTitle text="Drenagem do Solo" />
-                   <CustomPicker
+                    <CustomPicker
                         prompt="Nível de drenagem"
                         selectedValue={soilDrainage}
                         onValueChange={(itemValue, itemIndex) => setSoilDrainage(itemValue)}
@@ -186,6 +229,15 @@ export default function NovoSolo(props){
                             </View>
                         </ScrollView>
                     </Modal>
+
+                    <DataModal
+                        visible={modalRetornoVisible}
+                        title={soilName}
+                        closeModal={closeDataModal}
+                        data={dadosRetorno}
+                    />
+
+                    <TextButton title="Abrir modal" onPress={() => setModalRetornoVisible(true)}/>
                     
                 </View>
         </View>

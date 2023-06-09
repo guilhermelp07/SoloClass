@@ -1,20 +1,24 @@
 import { saveSoil } from "../database/databaseService";
 import smartsolosAPI from "./smartsolosAPI";
 
-export async function sendRequest(data, setLoaderVisible){
+export async function sendRequest(data, setLoaderVisible, showResult){
   const reqBody = createPostRequest(data);
   console.log(reqBody);
     await smartsolosAPI.post('classification', reqBody)
         .then((response) => {
           console.log(response.config.data);
           console.log(response.data);
-          
+          console.log("vai chamar a saveSoil -> imagePath: "+data.imagePath)
           saveSoil(response, data.soilDrainage, data.imagePath);
         })
         .catch((error) => {
+            console.log("ERRO sendRequest");
             console.error(error);
         })
-        .finally(() => {setLoaderVisible(false)});
+        .finally(() => {
+          setLoaderVisible(false);
+          showResult();
+        });
 }
 
 function createPostRequest(data){
@@ -31,9 +35,7 @@ function createPostRequest(data){
       }
     );
   });
-  
   console.log(soilProfileList);
-
   return (
       {
           "items": [

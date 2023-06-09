@@ -12,6 +12,8 @@ export default function CustomTextInput(props) {
             placeholder={props.placeholder}
             secureTextEntry={props.secureTextEntry}
             onChangeText={props.onChangeText}
+            onBlur={props.onBlur}
+            value={props.value}
         />
     );
 
