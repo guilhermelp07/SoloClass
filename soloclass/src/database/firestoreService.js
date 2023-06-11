@@ -4,7 +4,7 @@ import firebase from "./FirebaseConfig";
 const storage = getStorage(firebase);
 
 export async function saveImage(imagePath, imageName) {
-
+    
     return new Promise( async (resolve, reject) => {
         if(!imagePath) return;
         if(imagePath === '') return;
@@ -12,6 +12,7 @@ export async function saveImage(imagePath, imageName) {
     
         const storageRef = ref(storage, `imagens/${imageName}`);
         const metadata = {contentType: 'image/jpeg'};
+        
         const response = await fetch(imagePath);
         const blob = await response.blob();
     

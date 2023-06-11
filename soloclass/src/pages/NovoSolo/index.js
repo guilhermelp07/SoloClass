@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Modal, TextInput, TouchableOpacity, FlatList, Alert, Keyboard } from "react-native";
+import { View, Alert } from "react-native";
 import CustomTextInput from "../../components/CustomTextInput";
 import CustomButton from "../../components/CustomButton";
 import { useState } from "react";
@@ -8,14 +8,13 @@ import { pickerItems } from "../../components/ComponentData";
 import { pickerColors } from "../../components/ComponentData";
 import { ItemTitle } from "../../components/ItemTitle";
 import { sendRequest } from "../../services/smartsolosService";
-import { SoilProfile } from "../../components/SoilProfile";
-import TextButton from "../../components/TextButton";
-import ButtonStyles from "../../styles/ButtonStyles";
 import LoadAnimation from "../../components/LoadAnimation";
 import DataModal from "../../components/DataModal";
 import { getResult } from "../../database/databaseService";
+import ProfilesModal from "../../components/ProfilesModal";
 
 export default function NovoSolo(props){
+
     const {navigation} = props;
     const [ soilDrainage, setSoilDrainage ] = useState(0);
     const [ soilName, setSoilName ] = useState("");
@@ -148,7 +147,6 @@ export default function NovoSolo(props){
                         placeholder="Nome do solo"
                         onChangeText={(text) => setSoilName(text)}
                         value={soilName}
-                        // onBlur={() => {alert("opa")}}
                     />
 
                     <ItemTitle text="Drenagem do Solo" />
@@ -169,66 +167,14 @@ export default function NovoSolo(props){
                         onPress={newSoil}
                     />
 
-                    <Modal
+                    <ProfilesModal
                         visible={modalVisible}
-                        animationType="slide"
-                        transparent={true}
-                    >
-                        <ScrollView>
-                            <View
-                                style={Styles.modal}
-                            >
-                                <View style={Styles.containerSoilProfile}>
-
-                                    <TextButton
-                                        title="Fechar"
-                                        style={{position: 'relative'}}
-                                        textStyle={{fontSize: 16, color: /*'#459C9C'*/'#e40', fontWeight: 'bold'}}
-                                        onPress={closeModal}
-                                    />
-                                    <Text style={Styles.title}> Perfis do Solo </Text>
-                                    <TextInput
-                                        style={Styles.soilProfileInput}
-                                        placeholder="Nome do perfil"
-                                        onChangeText={(text) => setProfileName(text)}
-                                    />
-                                    <View style={Styles.limitForm}>
-                                        <ItemTitle text="Limite inferior:" />
-                                        <TextInput
-                                            style={Styles.soilProfileNumInput}
-                                            keyboardType="numeric"
-                                            onChangeText={(text) => setLowerLimit(parseFloat(text))}
-                                        />
-                                    </View>
-                                    <View style={Styles.limitForm}>
-                                        <ItemTitle text="Limite superior:" />
-                                        <TextInput
-                                            style={Styles.soilProfileNumInput}
-                                            keyboardType="numeric"
-                                            onChangeText={(text) => setUpperLimit(parseFloat(text))}
-                                        />
-                                    </View>
-                                    <TouchableOpacity
-                                        style={ButtonStyles.btnAdd}
-                                        onPress={addItem}
-                                    >
-                                        <Text style={{fontSize: 19, color: '#fff'}}>Adicionar perfil</Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <FlatList
-                                    data={soilProfileList}
-                                    keyExtractor={(item) => item.id}
-                                    renderItem={({item}) => 
-                                        <SoilProfile
-                                            data={item}
-                                            delete={() => deleteItem(item.id)}
-                                        />}
-                                    showsVerticalScrollIndicator={false}
-                                    scrollEnabled={false}
-                                />
-                            </View>
-                        </ScrollView>
-                    </Modal>
+                        setModalVisible={setModalVisible}
+                        setProfileName={setProfileName}
+                        addItem={addItem}
+                        deleteItem={deleteItem}
+                        soilProfileList={soilProfileList}
+                    />
 
                     <DataModal
                         visible={modalRetornoVisible}
@@ -236,9 +182,6 @@ export default function NovoSolo(props){
                         closeModal={closeDataModal}
                         data={dadosRetorno}
                     />
-
-                    <TextButton title="Abrir modal" onPress={() => setModalRetornoVisible(true)}/>
-                    
                 </View>
         </View>
     );
