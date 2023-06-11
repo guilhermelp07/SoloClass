@@ -29,9 +29,10 @@ function createPostRequest(data){
         "SIMB_HORIZ": value.profileName,
         "LIMITE_SUP": value.upperLimit,
         "LIMITE_INF": value.lowerLimit,
-        "COR_UMIDA_MATIZ": data.soilColor.MATIZ,
-        "COR_UMIDA_VALOR": data.soilColor.VALOR,
-        "COR_UMIDA_CROMA": data.soilColor.CROMA,
+        "ATIVIDADES_HUMANAS": value.humanActivity,
+        "COR_SECA_MATIZ": data.soilColor.MATIZ,
+        "COR_SECA_VALOR": data.soilColor.VALOR,
+        "COR_SECA_CROMA": data.soilColor.CROMA,
       }
     );
   });

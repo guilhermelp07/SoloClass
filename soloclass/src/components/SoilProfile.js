@@ -8,12 +8,6 @@ export function SoilProfile(props){
             <Text style={styles.text}>Limite inferior: {props.data.lowerLimit}</Text>
             <Text style={styles.text}>Limite superior: {props.data.upperLimit}</Text>
             <View style={styles.row}>
-                {/* <TouchableOpacity
-                    style={styles.btnEdit}
-                    onPress={props.edit}
-                >
-                    <Text style={styles.btnText}>Editar</Text>
-                </TouchableOpacity> */}
                 <TouchableOpacity
                     style={styles.btnDelete}
                     onPress={props.delete}

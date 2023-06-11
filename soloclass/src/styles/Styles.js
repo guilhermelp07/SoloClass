@@ -141,12 +141,13 @@ export default styles = StyleSheet.create({
         justifyContent: 'center'
       },
       soilProfileInput: {
-        width: 200,
+        width: 250,
         height: 45,
         fontSize: 18,
         padding: 7,
         borderWidth: 1,
         borderRadius: 5,
+        margin: 4,
         marginTop: 20
       },
       soilProfileNumInput: {

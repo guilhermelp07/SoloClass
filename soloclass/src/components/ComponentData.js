@@ -11,7 +11,7 @@ export const pickerItems = [
 ];
 
 export const pickerColors = [
-    { key: 0, color: "#1a0f0c", MATIZ: "5YR", VALOR: 2.5, CROMA: 4},
+    { key: 0, color: "#1a0f0c", MATIZ: "5YR", VALOR: 2.5, CROMA: 4 },
     { key: 1, color: "#3e1b0e", MATIZ: "5YR", VALOR: 3, CROMA: 6 },
     { key: 2, color: "#68290b", MATIZ: "5YR", VALOR: 4, CROMA: 6 },
     { key: 3, color: "#5d3826", MATIZ: "5YR", VALOR: 4, CROMA: 4 },

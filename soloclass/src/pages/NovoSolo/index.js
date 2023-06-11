@@ -1,4 +1,4 @@
-import { View, Alert } from "react-native";
+import { View, Alert, TouchableOpacity, Button } from "react-native";
 import CustomTextInput from "../../components/CustomTextInput";
 import CustomButton from "../../components/CustomButton";
 import { useState } from "react";
@@ -12,6 +12,8 @@ import LoadAnimation from "../../components/LoadAnimation";
 import DataModal from "../../components/DataModal";
 import { getResult } from "../../database/databaseService";
 import ProfilesModal from "../../components/ProfilesModal";
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { addProfile, deleteProfile, getSoilProfileList, resetSoilProfileList } from "../../data/DataRules";
 
 export default function NovoSolo(props){
 
@@ -22,12 +24,12 @@ export default function NovoSolo(props){
     const [ profileName, setProfileName ] = useState('');
     const [ lowerLimit, setLowerLimit ] = useState(0);
     const [ upperLimit, setUpperLimit ] = useState(0);
-    const [ soilProfileList, setSoilProfileList ] = useState([]);
     const [ colorIndex, setColorIndex ] = useState(0);
     const [ imagePath, setImagePath ] = useState("");
     const [ loaderVisible, setLoaderVisible ] = useState(false);
     const [ modalRetornoVisible, setModalRetornoVisible ] = useState(false);
     const [ dadosRetorno ] = useState({});
+    const [ humanActivity, setHumanActivity ] = useState(false);
 
     function openModal(){setModalVisible(true);}
 
@@ -35,6 +37,7 @@ export default function NovoSolo(props){
         setProfileName('');
         setLowerLimit(0);
         setUpperLimit(0);
+        setHumanActivity(false);
         setModalVisible(false);
     }
 
@@ -47,7 +50,7 @@ export default function NovoSolo(props){
         sendRequest({
             soilDrainage: soilDrainage,
             soilName: soilName,
-            soilProfiles: soilProfileList,
+            soilProfiles: getSoilProfileList(),
             soilColor: getSoilColor(),
             imagePath: imagePath
         }, setLoaderVisible, showResult);
@@ -66,30 +69,17 @@ export default function NovoSolo(props){
             Alert.alert("","Favor informar o nome do perfil!");
             return;
         }
-
-        let index = soilProfileList.length;
-
-        soilProfileList[index] = {
-            id: soilProfileList.length,
+        addProfile({
             profileName: profileName,
             lowerLimit: lowerLimit,
-            upperLimit: upperLimit
-        }
-
-        console.log("criou o elemento no index "+index);
-        setSoilProfileList(soilProfileList);
+            upperLimit: upperLimit,
+            humanActivity: humanActivity
+        })
         closeModal();
     }
 
     function deleteItem(id){
-        for(let i=0; i<soilProfileList.length; i++){
-            if(soilProfileList[i].id === id){
-                soilProfileList.splice(i, 1);
-                console.log("deletou o elemento com id "+id+", posição "+i)
-            }
-        }
-        setSoilProfileList(soilProfileList);
-        closeModal();
+        if (deleteProfile(id)) closeModal();
     }
 
     function openCamera(){
@@ -127,7 +117,7 @@ export default function NovoSolo(props){
         setSoilDrainage(0);
         setLowerLimit(0);
         setUpperLimit(0);
-        setSoilProfileList([]);
+        resetSoilProfileList();
         setColorIndex(0);
         setImagePath("");
     }
@@ -137,52 +127,60 @@ export default function NovoSolo(props){
 
             <LoadAnimation visible={loaderVisible}/>
 
-                <View style={Styles.container}>
-                    <CustomButton
-                      title="Câmera"
-                      onPress={openCamera}
-                    />
+            <View style={Styles.container}>
 
-                    <CustomTextInput
-                        placeholder="Nome do solo"
-                        onChangeText={(text) => setSoilName(text)}
-                        value={soilName}
-                    />
-
-                    <ItemTitle text="Drenagem do Solo" />
-                    <CustomPicker
-                        prompt="Nível de drenagem"
-                        selectedValue={soilDrainage}
-                        onValueChange={(itemValue, itemIndex) => setSoilDrainage(itemValue)}
-                        items={pickerItems}
-                    />
-                    
-                    <CustomButton
-                        title="Perfis de Solo"
-                        onPress={openModal}
-                    />
-
-                    <CustomButton
-                        title="Salvar"
-                        onPress={newSoil}
-                    />
-
-                    <ProfilesModal
-                        visible={modalVisible}
-                        setModalVisible={setModalVisible}
-                        setProfileName={setProfileName}
-                        addItem={addItem}
-                        deleteItem={deleteItem}
-                        soilProfileList={soilProfileList}
-                    />
-
-                    <DataModal
-                        visible={modalRetornoVisible}
-                        title={soilName}
-                        closeModal={closeDataModal}
-                        data={dadosRetorno}
+                <View style={{marginBottom: 50}}>
+                    <Ionicons
+                        name="camera"
+                        size={70}
+                        onPress={openCamera}
                     />
                 </View>
+
+                <CustomTextInput
+                    placeholder="Nome do solo"
+                    onChangeText={(text) => setSoilName(text)}
+                    value={soilName}
+                />
+
+                <ItemTitle text="Drenagem do Solo" />
+                <CustomPicker
+                    prompt="Nível de drenagem"
+                    selectedValue={soilDrainage}
+                    onValueChange={(itemValue, itemIndex) => setSoilDrainage(itemValue)}
+                    items={pickerItems}
+                />
+                
+                <CustomButton
+                    title="Perfis de Solo"
+                    onPress={openModal}
+                />
+
+                <CustomButton
+                    title="Salvar"
+                    onPress={newSoil}
+                />
+
+                <ProfilesModal
+                    visible={modalVisible}
+                    closeModal={closeModal}
+                    setProfileName={setProfileName}
+                    setUpperLimit={setUpperLimit}
+                    setLowerLimit={setLowerLimit}
+                    addItem={addItem}
+                    deleteItem={deleteItem}
+                    soilProfileList={getSoilProfileList()}
+                    setHumanActivity={setHumanActivity}
+                    humanActivity={humanActivity}
+                />
+
+                <DataModal
+                    visible={modalRetornoVisible}
+                    title={soilName}
+                    closeModal={closeDataModal}
+                    data={dadosRetorno}
+                />
+            </View>
         </View>
     );
 }

@@ -5,16 +5,20 @@ import { ItemTitle } from "./ItemTitle";
 import ButtonStyles from "../styles/ButtonStyles";
 import { FlatList } from "react-native";
 import { SoilProfile } from "./SoilProfile";
+import { CheckBox } from "@rneui/themed";
+import { useState } from "react";
 
 export default function ProfilesModal(props) {
 
-    const setModalVisible = props.setModalVisible;
+    const closeModal = props.closeModal;
     const setProfileName = props.setProfileName;
     const setUpperLimit = props.setUpperLimit;
     const setLowerLimit = props.setLowerLimit;
     const addItem = props.addItem;
     const deleteItem = props.deleteItem;
     const soilProfileList = props.soilProfileList;
+    const setHumanActivity = props.setHumanActivity;
+    const humanActivity = props.humanActivity;
 
     return (
         <Modal
@@ -29,7 +33,7 @@ export default function ProfilesModal(props) {
                             title="Fechar"
                             style={{position: 'relative'}}
                             textStyle={{fontSize: 16, color: /*'#459C9C'*/'#e40', fontWeight: 'bold'}}
-                            onPress={() => setModalVisible(false)}
+                            onPress={closeModal}
                         />
                         <Text style={Styles.title}> Perfis do Solo </Text>
                         <TextInput
@@ -51,8 +55,16 @@ export default function ProfilesModal(props) {
                                 style={Styles.soilProfileNumInput}
                                 keyboardType="numeric"
                                 onChangeText={(text) => setLowerLimit(parseFloat(text))}
-                            />
+                            />                        
                         </View>
+                        <CheckBox
+                            title="Atividade humana"
+                            textStyle={{fontSize: 16, fontWeight: 'normal'}}
+                            center={true}
+                            checked={humanActivity}
+                            onPress={() => setHumanActivity(!humanActivity)}
+                            checkedColor="#459C9C"
+                        />
                         <TouchableOpacity
                             style={ButtonStyles.btnAdd}
                             onPress={addItem}
