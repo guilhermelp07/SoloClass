@@ -46,19 +46,19 @@ export default function DetalhesSolo({route}){
             
             <View style={Styles.soilDetails}>
                 <Text style={Styles.attribute}>
-                    Drenagem: <Text style={{fontWeight:'normal'}}> {drenagem} </Text>
+                    Drenagem: <Text style={{fontFamily: 'QuickSand'}}> {drenagem} </Text>
                 </Text>
                 <Text style={Styles.attribute}>
-                    Ordem: <Text style={{fontWeight:'normal'}}> {ordem} </Text>
+                    Ordem: <Text style={{fontFamily: 'QuickSand'}}> {ordem} </Text>
                 </Text>
                 <Text style={Styles.attribute}>
-                    Sub-ordem: <Text style={{fontWeight:'normal'}}> {subOrdem} </Text>
+                    Sub-ordem: <Text style={{fontFamily: 'QuickSand'}}> {subOrdem} </Text>
                 </Text>
                 <Text style={Styles.attribute}>
-                    Grupo: <Text style={{fontWeight:'normal'}}> {grupo} </Text>
+                    Grupo: <Text style={{fontFamily: 'QuickSand'}}> {grupo} </Text>
                 </Text>
                 <Text style={Styles.attribute}>
-                    Sub-grupo: <Text style={{fontWeight:'normal'}}> {subGrupo} </Text>
+                    Sub-grupo: <Text style={{fontFamily: 'QuickSand'}}> {subGrupo} </Text>
                 </Text>
             </View>
         </View>
