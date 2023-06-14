@@ -9,9 +9,9 @@ import { pickerColors } from "../../components/ComponentData";
 import { ItemTitle } from "../../components/ItemTitle";
 import { sendRequest } from "../../services/smartsolosService";
 import LoadAnimation from "../../components/LoadAnimation";
-import DataModal from "../../components/DataModal";
+import DataModal from "../../components/modals/DataModal";
 import { getResult } from "../../database/databaseService";
-import ProfilesModal from "../../components/ProfilesModal";
+import ProfilesModal from "../../components/modals/ProfilesModal";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { addProfile, deleteProfile, getSoilProfileList, resetSoilProfileList } from "../../data/DataRules";
 

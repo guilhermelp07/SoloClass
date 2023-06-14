@@ -1,10 +1,10 @@
 import { Modal, TextInput, View, Text, ScrollView } from "react-native";
-import Styles from "../styles/Styles";
-import { ItemTitle } from "./ItemTitle";
+import Styles from "../../styles/Styles";
+import { ItemTitle } from "../ItemTitle";
 import { FlatList } from "react-native";
-import { SoilProfile } from "./SoilProfile";
+import { SoilProfile } from "../SoilProfile";
 import { CheckBox } from "@rneui/themed";
-import SmallButton from "./SmallButton";
+import SmallButton from "../SmallButton";
 
 export default function ProfilesModal(props) {
 

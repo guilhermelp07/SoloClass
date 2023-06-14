@@ -1,7 +1,7 @@
 import { Modal, View, Text } from "react-native";
 import { StyleSheet } from "react-native";
-import DataItem from "./DataItem";
-import CustomButton from "./CustomButton";
+import DataItem from "../DataItem";
+import CustomButton from "../CustomButton";
 
 export default function DataModal(props){
     return (
