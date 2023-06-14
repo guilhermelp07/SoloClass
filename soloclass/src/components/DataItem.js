@@ -12,13 +12,13 @@ export default function DataItem(props){
 const styles = StyleSheet.create({
       item: {
         flex: 1,
-        width: 120,
+        width: 140,
         flexDirection: 'row',
         // backgroundColor: 'violet'
       },
       textLeft: {
         fontSize: 20,
-        width: 140,
+        width: 130,
         fontWeight: 'bold',
         marginLeft: 20,
         marginTop: 10,

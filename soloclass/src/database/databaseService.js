@@ -87,35 +87,3 @@ export async function getResult(nomeSolo, setDadosRetorno, setModalRetornoVisibl
     }).catch((error) => console.error(error)
     ).finally(() => setModalRetornoVisible(true));
 }
-
-/*
-export async function getSoils1(){
-    await get(ref(database, 'solos')).then((snapshot) => {
-        if (snapshot.exists()){
-            console.log(snapshot.val().ordem);
-        } else {
-            console.log("Nada")
-        }
-    }).catch((error) => {
-        console.error(error)
-    })
-    // const dbRef = ref(database)
-    // await get(child(dbRef, 'solos')).then((snapshot) => {
-    //     if(snapshot.exists()){
-    //         console.log(snapshot.val());
-    //         list = snapshot.val();
-    //         return;
-    //     } else {
-    //         console.log(" No data available");
-    //     }
-    // }).catch((error) => {
-    //     console.error(error);
-    // })
-    const [ soilList, setSoilList ] = useState([])
-    onValue(ref(database, '/solos'), (snapshot) => {
-        //console.log(snapshot.val());
-    }, {
-        onlyOnce: true
-    });
-}
-*/

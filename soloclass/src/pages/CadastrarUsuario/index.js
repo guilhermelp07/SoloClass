@@ -50,7 +50,7 @@ export default function CadastrarUsuario(){
 
     return(
         <View style={Styles.container}>
-            <Text style={Styles.logo}>SoloClass</Text>
+            <Text style={styles.logo}>SoloClass</Text>
             <CustomTextInput
                 placeholder="Nome"
                 onChangeText={(text) => setName(text)}
@@ -76,3 +76,16 @@ export default function CadastrarUsuario(){
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    logo: {
+        fontSize: 70,
+        margin: 20,
+        marginBottom: 80,
+        fontFamily: 'FFF_Tusj',
+        color: '#6a4', //'#692',
+        textShadowRadius: 12,
+        textShadowColor: 'gray',
+        textShadowOffset: { width: 0.5, height: 0.5 }
+      }
+})

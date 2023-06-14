@@ -11,9 +11,7 @@ export default function CustomCard(props) {
             <View style={Styles.cardContent}>
                 <Card.Image
                     style={Styles.cardImage}
-                    source={{
-                        uri: props.dados.uri
-                    }}
+                    source={{ uri: props.dados.uri }}
                 />
                 <Text style={Styles.cardText}>{props.dados.text}</Text>
                 <TouchableOpacity

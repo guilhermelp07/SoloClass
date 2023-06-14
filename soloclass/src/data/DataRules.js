@@ -33,3 +33,17 @@ export function deleteProfile(id){
 export function resetSoilProfileList(){
     setSoilProfileList([]);
 }
+
+export function getStringDrenagem(intensidade){
+    switch (intensidade){
+        case 0: { return 'Não informada'; }
+        case 1: { return '1 - Excessiva'; }
+        case 2: { return '2 - Forte'; }
+        case 3: { return '3 - Acentuada'; }
+        case 4: { return '4 - Boa'; }
+        case 5: { return '5 - Moderada'; }
+        case 6: { return '6 - Imperfeita'; }
+        case 7: { return '7 - Ruim'; }
+        case 8: { return '8 - Péssima'; }
+    }
+}

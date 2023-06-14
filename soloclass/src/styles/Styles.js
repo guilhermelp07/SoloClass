@@ -128,7 +128,6 @@ export default styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        // flexDirection: 'row'
       },
       limitForm: {
         flex: 1,
@@ -155,6 +154,7 @@ export default styles = StyleSheet.create({
         fontSize: 18,
         padding: 7,
         borderWidth: 1,
-        borderRadius: 5
+        borderRadius: 5,
+        fontFamily: 'QuickSand'
       }
 });
