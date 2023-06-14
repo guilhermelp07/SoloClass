@@ -2,6 +2,8 @@ let soilProfileList = [];
 
 export function getSoilProfileList(){ return soilProfileList }
 
+export function getProfileListLength(){ return soilProfileList.length; }
+
 export function setSoilProfileList(list){ soilProfileList = list }
 
 export function addProfile(item){

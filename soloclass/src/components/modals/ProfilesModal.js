@@ -5,6 +5,8 @@ import { FlatList } from "react-native";
 import { SoilProfile } from "../SoilProfile";
 import { CheckBox } from "@rneui/themed";
 import SmallButton from "../SmallButton";
+import { useState } from "react";
+import ProfileListModal from "./ProfileListModal";
 
 export default function ProfilesModal(props) {
 
@@ -13,10 +15,20 @@ export default function ProfilesModal(props) {
     const setUpperLimit = props.setUpperLimit;
     const setLowerLimit = props.setLowerLimit;
     const addItem = props.addItem;
-    const deleteItem = props.deleteItem;
     const soilProfileList = props.soilProfileList;
     const setHumanActivity = props.setHumanActivity;
     const humanActivity = props.humanActivity;
+
+    const [ listVisible, setListVisible ] = useState(false);
+    const [ emptyList, setEmptyList ] = useState(true);
+
+    function openProfileList(){ setListVisible(true) }
+    function closeProfileList(){ setListVisible(false) }
+
+    function addPerfil(){
+        addItem();
+        setEmptyList(false);
+    }
 
     return (
         <Modal
@@ -59,23 +71,26 @@ export default function ProfilesModal(props) {
                         />
                         <SmallButton
                             title="Adicionar Perfil"
-                            onPress={addItem}
+                            onPress={addPerfil}
                         />
+                        {soilProfileList.length > 0 || !emptyList ?
+                            <SmallButton
+                                title="Ver Perfis"
+                                onPress={openProfileList}
+                            />
+                        : 
+                            null
+                        }
                         <SmallButton
                             title="Cancelar"
                             onPress={closeModal}
                         />
                     </View>
-                    <FlatList
+                    <ProfileListModal
+                        visible={listVisible}
                         data={soilProfileList}
-                        keyExtractor={(item) => item.id}
-                        renderItem={({item}) => 
-                            <SoilProfile
-                                data={item}
-                                delete={() => deleteItem(item.id)}
-                            />}
-                        showsVerticalScrollIndicator={false}
-                        scrollEnabled={false}
+                        closeModal={closeProfileList}
+                        setEmptyList={setEmptyList}
                     />
                 </View>
 

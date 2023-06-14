@@ -74,12 +74,7 @@ export default function NovoSolo(props){
             lowerLimit: lowerLimit,
             upperLimit: upperLimit,
             humanActivity: humanActivity
-        })
-        closeModal();
-    }
-
-    function deleteItem(id){
-        if (deleteProfile(id)) closeModal();
+        });
     }
 
     function openCamera(){
@@ -168,7 +163,6 @@ export default function NovoSolo(props){
                     setUpperLimit={setUpperLimit}
                     setLowerLimit={setLowerLimit}
                     addItem={addItem}
-                    deleteItem={deleteItem}
                     soilProfileList={getSoilProfileList()}
                     setHumanActivity={setHumanActivity}
                     humanActivity={humanActivity}
