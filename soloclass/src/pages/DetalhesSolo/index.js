@@ -1,12 +1,26 @@
 import { Image, Text, View } from "react-native"
-
 import Styles from "../../styles/Styles";
+import { useEffect } from "react";
+import { getSoilById } from "../../database/databaseService";
 
 export default function DetalhesSolo({route}){
+
+    const soilId = route.params?.id;
+    let soilData = {};
+
+    useEffect(() => {
+        getSoilById(soilId)
+            .then((value) => {
+                soilData = value;
+                console.log("RETORNOU...");
+                console.log(value);
+            })
+    });
+
     return(
         <View style={Styles.detailContainer}>
             <View style={Styles.detailsHeader}>
-                <Text style={Styles.title}>{route.params?.title}</Text>
+                <Text style={Styles.title}>{soilId}</Text>
                 <Image
                     style={Styles.image}
                     source={{

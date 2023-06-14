@@ -64,6 +64,18 @@ export async function getSoils(addSoil){
     })
 }
 
+export async function getSoilById(id){
+    return new Promise(async (resolve, reject) => {
+        const soilRef = ref(database, `solos/${id}`)
+        await get(soilRef)
+            .then((snapshot) => {
+                console.log(snapshot.val());
+                resolve(snapshot.val());
+            })
+            .catch((error) => console.error(error));
+    })
+}
+
 export async function getResult(nomeSolo, setDadosRetorno, setModalRetornoVisible){
     await get(ref(database, 'solos/'+nomeSolo)).then((snapshot) => {
         if (snapshot.exists()){
@@ -73,7 +85,7 @@ export async function getResult(nomeSolo, setDadosRetorno, setModalRetornoVisibl
             console.log("Nada");
         }
     }).catch((error) => console.error(error)
-    ).finally(() => {setModalRetornoVisible(true);});
+    ).finally(() => setModalRetornoVisible(true));
 }
 
 /*

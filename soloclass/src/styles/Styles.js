@@ -42,20 +42,16 @@ export default styles = StyleSheet.create({
       },
       attribute: {
         fontSize: 20,
-        fontWeight:'bold',
         width: '100%',
         marginTop: 5,
-        marginBottom: 5
-      },
-      logo: {
-        fontSize: 50,
-        margin: 20,
-        marginBottom: 60
+        marginBottom: 5,
+        fontFamily: 'QuickSand-Bold'
       },
       title: {
         margin: 10,
         fontSize: 26,
-        fontWeight: 'bold'
+        // fontWeight: 'bold',
+        fontFamily: 'FFF_Tusj'
       },
       image: {
         padding: 0,
@@ -89,11 +85,12 @@ export default styles = StyleSheet.create({
       cardButton: {
         fontSize: 16,
         color: '#459C9C', // color:'#8df',
-        fontWeight:'bold',
         margin: 5,
+        fontFamily: 'QuickSand-Bold'
       },
       cardText: {
-        margin: 10
+        margin: 10,
+        fontFamily: 'QuickSand'
       },
       picker: {
         height: 10,
@@ -109,7 +106,8 @@ export default styles = StyleSheet.create({
         margin: 10,
         fontSize: 17,
         height: 30,
-        textAlignVertical: 'center'
+        textAlignVertical: 'center',
+        fontFamily: 'QuickSand'
       },
       modal: {
         backgroundColor: '#fff', //'#DAFFF9',
@@ -148,7 +146,8 @@ export default styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         margin: 4,
-        marginTop: 20
+        marginTop: 20,
+        fontFamily: 'QuickSand'
       },
       soilProfileNumInput: {
         width: 80,

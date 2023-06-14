@@ -7,7 +7,7 @@ export default function CustomCard(props) {
     const navigator = useNavigation();
     return (
         <Card containerStyle={Styles.card}>
-            <Card.Title style={{fontSize:18}}>{props.dados.title}</Card.Title>
+            <Card.Title style={{fontSize:18, fontFamily: 'FFF_Tusj', fontWeight: 'normal'}}>{props.dados.title}</Card.Title>
             <View style={Styles.cardContent}>
                 <Card.Image
                     style={Styles.cardImage}
@@ -17,7 +17,7 @@ export default function CustomCard(props) {
                 />
                 <Text style={Styles.cardText}>{props.dados.text}</Text>
                 <TouchableOpacity
-                    onPress={() => navigator.navigate("Detalhes do Solo", {title: props.dados.title, uri: props.dados.uri})}
+                    onPress={() => navigator.navigate("Detalhes do Solo", {id: props.dados.title})}
                 >
                     <Text style={Styles.cardButton}>Relatório Completo</Text>
                 </TouchableOpacity>

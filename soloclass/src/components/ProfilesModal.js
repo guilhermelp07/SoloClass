@@ -1,12 +1,10 @@
-import { Modal, TextInput, View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { Modal, TextInput, View, Text, ScrollView } from "react-native";
 import Styles from "../styles/Styles";
-import TextButton from "./TextButton";
 import { ItemTitle } from "./ItemTitle";
-import ButtonStyles from "../styles/ButtonStyles";
 import { FlatList } from "react-native";
 import { SoilProfile } from "./SoilProfile";
 import { CheckBox } from "@rneui/themed";
-import { useState } from "react";
+import SmallButton from "./SmallButton";
 
 export default function ProfilesModal(props) {
 
@@ -29,12 +27,6 @@ export default function ProfilesModal(props) {
             <ScrollView>
                 <View style={Styles.modal}>
                     <View style={Styles.containerSoilProfile}>
-                        <TextButton
-                            title="Fechar"
-                            style={{position: 'relative'}}
-                            textStyle={{fontSize: 16, color: /*'#459C9C'*/'#e40', fontWeight: 'bold'}}
-                            onPress={closeModal}
-                        />
                         <Text style={Styles.title}> Perfis do Solo </Text>
                         <TextInput
                             style={Styles.soilProfileInput}
@@ -59,18 +51,20 @@ export default function ProfilesModal(props) {
                         </View>
                         <CheckBox
                             title="Atividade humana"
-                            textStyle={{fontSize: 16, fontWeight: 'normal'}}
+                            textStyle={{fontSize: 17,fontFamily: 'QuickSand', fontWeight: 'normal'}}
                             center={true}
                             checked={humanActivity}
                             onPress={() => setHumanActivity(!humanActivity)}
                             checkedColor="#459C9C"
                         />
-                        <TouchableOpacity
-                            style={ButtonStyles.btnAdd}
+                        <SmallButton
+                            title="Adicionar Perfil"
                             onPress={addItem}
-                        >
-                            <Text style={{fontSize: 19, color: '#fff'}}>Adicionar perfil</Text>
-                        </TouchableOpacity>
+                        />
+                        <SmallButton
+                            title="Cancelar"
+                            onPress={closeModal}
+                        />
                     </View>
                     <FlatList
                         data={soilProfileList}

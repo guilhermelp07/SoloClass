@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 export default styles = StyleSheet.create({
     btnText: {
         fontSize: 24,
-        color: '#fff'
+        color: '#fff',
+        fontFamily: 'QuickSand'
     },
     botao: {
         width: 170,
@@ -26,9 +27,10 @@ export default styles = StyleSheet.create({
     },
     tButtonText: {
         fontSize: 15,
-        color: '#459C9C'
+        color: '#459C9C',
+        fontFamily: 'QuickSand-Bold'
     },
-    btnAdd: {
+    smallBtn: {
         width: 160,
         height: 45,
         borderRadius: 10,
@@ -36,5 +38,10 @@ export default styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#459C9C',
         margin: 5
+    },
+    smallBtnText: {
+        fontSize: 19,
+        color: '#fff',
+        fontFamily: 'QuickSand'
     }
 });

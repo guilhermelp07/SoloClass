@@ -42,7 +42,6 @@ export default function Login(){
                     })
                     .finally(() => {setLoaderVisible(false)})
                 console.log("Login com o usuário: "+value.user.email+", id: "+value.user.uid);
-                // Alert.alert("","Usuário "+value.user.email+" logado com sucesso!")
                 navigator.navigate("Home");
             })
             .catch((error) => {
@@ -57,7 +56,7 @@ export default function Login(){
 
             <LoadAnimation visible={loaderVisible}/>
 
-            <Text style={Styles.logo}>SoloClass</Text>
+            <Text style={styles.logo}>SoloClass</Text>
             <CustomTextInput
                 placeholder="Email"
                 onChangeText={(text) => setEmail(text)}
@@ -83,3 +82,16 @@ export default function Login(){
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    logo: {
+        fontSize: 70,
+        margin: 20,
+        marginBottom: 80,
+        fontFamily: 'FFF_Tusj',
+        color: '#6a4', //'#692',
+        textShadowRadius: 12,
+        textShadowColor: 'gray',
+        textShadowOffset: { width: 0.5, height: 0.5 }
+      }
+})

@@ -1,6 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
 import { TextInput, StyleSheet } from "react-native";
-import Styles from "../styles/Styles";
 
 export default function CustomTextInput(props) {
 
@@ -8,7 +7,7 @@ export default function CustomTextInput(props) {
 
     return (
         <TextInput
-            style={Styles.textInput}
+            style={styles.textInput}
             placeholder={props.placeholder}
             secureTextEntry={props.secureTextEntry}
             onChangeText={props.onChangeText}
@@ -18,3 +17,18 @@ export default function CustomTextInput(props) {
     );
 
 }
+
+const styles = StyleSheet.create({
+    textInput: {
+        width: 270,
+        height: 50,
+        borderRadius: 5,
+        borderColor: '#aaa',
+        fontFamily: 'QuickSand',
+        borderWidth: 2,
+        backgroundColor: '#fff',
+        margin: 10,
+        fontSize: 20,
+        paddingLeft: 12
+      },
+})

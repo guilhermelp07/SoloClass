@@ -5,8 +5,6 @@ import ButtonStyles from "../styles/ButtonStyles";
 
 export default function TextButton(props) {
 
-    const navigator = useNavigation();
-
     return (
         <TouchableOpacity
             style={props.style ? props.style : ButtonStyles.tButton}
