@@ -53,6 +53,6 @@ const styles = StyleSheet.create({
         margin: 20,
         marginBottom: 30,
         fontSize: 26,
-        fontWeight: 'bold'
+        fontFamily: 'FFF_Tusj'
       }
 })

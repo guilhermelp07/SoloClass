@@ -2,7 +2,7 @@ import { Text, View, TouchableOpacity,ImageBackground } from "react-native";
 import React from 'react'
 import {Camera} from 'expo-camera'
 import CustomPickerColor from "../../components/CustomPickerColor";
-import { pickerColors } from "../../components/ComponentData";
+import { pickerColors } from "../../data/ComponentData";
 export default function CameraScreen({route}){
 
     const setColorIndex = route.params.setColorIndex;
