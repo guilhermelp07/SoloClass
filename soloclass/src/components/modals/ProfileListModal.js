@@ -3,6 +3,7 @@ import { SoilProfile } from "../SoilProfile";
 import Styles from "../../styles/Styles";
 import SmallButton from "../SmallButton";
 import { deleteProfile, getProfileListLength } from "../../data/DataRules";
+import { Text } from "react-native";
 
 export default function ProfileListModal(props){
 
@@ -22,6 +23,7 @@ export default function ProfileListModal(props){
             transparent={true}
         >
             <View style={Styles.modal}>
+                <Text style={Styles.title}>Lista de Perfis</Text>
                 <FlatList
                     data={props.data}
                     keyExtractor={(item) => item.id}
@@ -31,7 +33,7 @@ export default function ProfileListModal(props){
                             delete={() => deleteItem(item.id)}
                         />}
                     showsVerticalScrollIndicator={false}
-                    scrollEnabled={false}
+                    scrollEnabled={true}
                 />
                 <SmallButton
                     title="OK"

@@ -12,7 +12,8 @@ import DataModal from "../../components/modals/DataModal";
 import { getResult } from "../../database/databaseService";
 import ProfilesModal from "../../components/modals/ProfilesModal";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { addProfile, deleteProfile, getSoilProfileList, resetSoilProfileList } from "../../data/DataRules";
+import { getSoilProfileList, resetSoilProfileList } from "../../data/DataRules";
+import { useEffect } from "react";
 
 export default function NovoSolo(props){
 
@@ -20,25 +21,25 @@ export default function NovoSolo(props){
     const [ soilDrainage, setSoilDrainage ] = useState(0);
     const [ soilName, setSoilName ] = useState("");
     const [ modalVisible, setModalVisible ] = useState(false);
-    const [ profileName, setProfileName ] = useState('');
-    const [ lowerLimit, setLowerLimit ] = useState(0);
-    const [ upperLimit, setUpperLimit ] = useState(0);
     const [ colorIndex, setColorIndex ] = useState(0);
     const [ imagePath, setImagePath ] = useState("");
     const [ loaderVisible, setLoaderVisible ] = useState(false);
     const [ modalRetornoVisible, setModalRetornoVisible ] = useState(false);
     const [ dadosRetorno ] = useState({});
-    const [ humanActivity, setHumanActivity ] = useState(false);
 
-    function openModal(){setModalVisible(true);}
 
-    function closeModal(){
-        setProfileName('');
-        setLowerLimit(0);
-        setUpperLimit(0);
-        setHumanActivity(false);
-        setModalVisible(false);
-    }
+    function openModal(){ setModalVisible(true) }
+
+    function closeModal(){ setModalVisible(false) }
+
+    useEffect(
+        () => {
+            navigation.addListener('beforeRemove', (e) => {
+                resetSoilProfileList();
+                navigation.dispatch(e.data.action);
+            });
+        }
+    );
 
     async function newSoil(){
         if(soilName === ""){
@@ -60,19 +61,6 @@ export default function NovoSolo(props){
             MATIZ: pickerColors[colorIndex].MATIZ,
             VALOR: pickerColors[colorIndex].VALOR,
             CROMA: pickerColors[colorIndex].CROMA
-        });
-    }
-
-    function addItem(){
-        if(profileName === ''){
-            Alert.alert("","Favor informar o nome do perfil!");
-            return;
-        }
-        addProfile({
-            profileName: profileName,
-            lowerLimit: lowerLimit,
-            upperLimit: upperLimit,
-            humanActivity: humanActivity
         });
     }
 
@@ -107,10 +95,7 @@ export default function NovoSolo(props){
 
     function resetStates(){
         setSoilName("");
-        setProfileName("");
         setSoilDrainage(0);
-        setLowerLimit(0);
-        setUpperLimit(0);
         resetSoilProfileList();
         setColorIndex(0);
         setImagePath("");
@@ -158,13 +143,7 @@ export default function NovoSolo(props){
                 <ProfilesModal
                     visible={modalVisible}
                     closeModal={closeModal}
-                    setProfileName={setProfileName}
-                    setUpperLimit={setUpperLimit}
-                    setLowerLimit={setLowerLimit}
-                    addItem={addItem}
                     soilProfileList={getSoilProfileList()}
-                    setHumanActivity={setHumanActivity}
-                    humanActivity={humanActivity}
                 />
 
                 <DataModal

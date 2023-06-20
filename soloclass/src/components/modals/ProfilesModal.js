@@ -1,24 +1,22 @@
 import { Modal, TextInput, View, Text, ScrollView } from "react-native";
 import Styles from "../../styles/Styles";
 import { ItemTitle } from "../ItemTitle";
-import { FlatList } from "react-native";
-import { SoilProfile } from "../SoilProfile";
 import { CheckBox } from "@rneui/themed";
 import SmallButton from "../SmallButton";
 import { useState } from "react";
 import ProfileListModal from "./ProfileListModal";
+import { Alert } from "react-native";
+import { addProfile } from "../../data/DataRules";
 
 export default function ProfilesModal(props) {
 
     const closeModal = props.closeModal;
-    const setProfileName = props.setProfileName;
-    const setUpperLimit = props.setUpperLimit;
-    const setLowerLimit = props.setLowerLimit;
-    const addItem = props.addItem;
     const soilProfileList = props.soilProfileList;
-    const setHumanActivity = props.setHumanActivity;
-    const humanActivity = props.humanActivity;
 
+    const [ profileName, setProfileName ] = useState('');
+    const [ upperLimit, setUpperLimit ] = useState(0);
+    const [ lowerLimit, setLowerLimit ] = useState(0);
+    const [ humanActivity, setHumanActivity ] = useState(false);
     const [ listVisible, setListVisible ] = useState(false);
     const [ emptyList, setEmptyList ] = useState(true);
 
@@ -28,6 +26,28 @@ export default function ProfilesModal(props) {
     function addPerfil(){
         addItem();
         setEmptyList(false);
+        resetStates();
+    }
+
+    function resetStates(){
+        setProfileName('');
+        setUpperLimit('');
+        setLowerLimit('');
+        setHumanActivity(false);
+    }
+
+    function addItem(){
+        if(profileName === ''){
+            Alert.alert("","Favor informar o nome do perfil!");
+            return;
+        }
+        addProfile({
+            profileName: profileName,
+            lowerLimit: lowerLimit,
+            upperLimit: upperLimit,
+            humanActivity: humanActivity
+        });
+        Alert.alert("","Perfil incluído com sucesso!");
     }
 
     return (
@@ -43,6 +63,7 @@ export default function ProfilesModal(props) {
                         <TextInput
                             style={Styles.soilProfileInput}
                             placeholder="Nome do perfil"
+                            value={profileName}
                             onChangeText={(text) => setProfileName(text)}
                         />
                         <View style={Styles.limitForm}>
@@ -50,6 +71,7 @@ export default function ProfilesModal(props) {
                             <TextInput
                                 style={Styles.soilProfileNumInput}
                                 keyboardType="numeric"
+                                value={upperLimit.toString()}
                                 onChangeText={(text) => setUpperLimit(parseFloat(text))}
                             />
                         </View>
@@ -58,6 +80,7 @@ export default function ProfilesModal(props) {
                             <TextInput
                                 style={Styles.soilProfileNumInput}
                                 keyboardType="numeric"
+                                value={lowerLimit.toString()}
                                 onChangeText={(text) => setLowerLimit(parseFloat(text))}
                             />                        
                         </View>

@@ -7,6 +7,7 @@ export function SoilProfile(props){
             <Text style={styles.title}>{props.data.profileName}</Text>
             <Text style={styles.text}>Limite inferior: {props.data.lowerLimit}</Text>
             <Text style={styles.text}>Limite superior: {props.data.upperLimit}</Text>
+            <Text style={styles.text}>Ativ. humana: {props.data.humanActivity ? "Sim" : "Não"}</Text>
             <View style={styles.row}>
                 <TouchableOpacity
                     style={styles.btnDelete}
@@ -34,11 +35,13 @@ const styles = StyleSheet.create({
     title: {
         margin: 2,
         fontSize: 21,
-        fontWeight: 'bold'
+        fontFamily: 'QuickSand-Bold'
     },
     text: {
         margin: 2,
-        fontSize: 20
+        fontSize: 20,
+        fontFamily: 'QuickSand',
+        textAlign: 'left',
     },
     row: {
         flex: 1,
@@ -69,6 +72,7 @@ const styles = StyleSheet.create({
     },
     btnText: {
         fontSize: 20,
-        color: '#fff'
+        color: '#fff',
+        fontFamily: 'QuickSand'
     }
 });
