@@ -36,7 +36,9 @@ export default function NovoSolo(props){
         () => {
             navigation.addListener('beforeRemove', (e) => {
                 resetSoilProfileList();
-                navigation.dispatch(e.data.action);
+                if(navigation.canGoBack()) {
+                    navigation.dispatch(e.data.action);
+                }
             });
         }
     );
@@ -131,7 +133,7 @@ export default function NovoSolo(props){
                 />
                 
                 <CustomButton
-                    title="Perfis de Solo"
+                    title="Perfis do Solo"
                     onPress={openModal}
                 />
 
