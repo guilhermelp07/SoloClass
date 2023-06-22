@@ -14,8 +14,8 @@ export default function ProfilesModal(props) {
     const soilProfileList = props.soilProfileList;
 
     const [ profileName, setProfileName ] = useState('');
-    const [ upperLimit, setUpperLimit ] = useState(0);
-    const [ lowerLimit, setLowerLimit ] = useState(0);
+    const [ upperLimit, setUpperLimit ] = useState('0');
+    const [ lowerLimit, setLowerLimit ] = useState('0');
     const [ humanActivity, setHumanActivity ] = useState(false);
     const [ listVisible, setListVisible ] = useState(false);
     const [ emptyList, setEmptyList ] = useState(true);
@@ -24,30 +24,31 @@ export default function ProfilesModal(props) {
     function closeProfileList(){ setListVisible(false) }
 
     function addPerfil(){
-        addItem();
+        if(!addItem()) return;
         setEmptyList(false);
         resetStates();
     }
 
     function resetStates(){
         setProfileName('');
-        setUpperLimit('');
-        setLowerLimit('');
+        setUpperLimit('0');
+        setLowerLimit('0');
         setHumanActivity(false);
     }
 
     function addItem(){
         if(profileName === ''){
             Alert.alert("","Favor informar o nome do perfil!");
-            return;
+            return false;
         }
         addProfile({
             profileName: profileName,
-            lowerLimit: lowerLimit,
-            upperLimit: upperLimit,
+            lowerLimit: parseFloat(lowerLimit),
+            upperLimit: parseFloat(upperLimit),
             humanActivity: humanActivity
         });
         Alert.alert("","Perfil incluído com sucesso!");
+        return true;
     }
 
     return (
@@ -71,8 +72,8 @@ export default function ProfilesModal(props) {
                             <TextInput
                                 style={Styles.soilProfileNumInput}
                                 keyboardType="numeric"
-                                value={upperLimit.toString()}
-                                onChangeText={(text) => setUpperLimit(parseFloat(text))}
+                                value={upperLimit}
+                                onChangeText={(text) => setUpperLimit(text)}
                             />
                         </View>
                         <View style={Styles.limitForm}>
@@ -80,8 +81,8 @@ export default function ProfilesModal(props) {
                             <TextInput
                                 style={Styles.soilProfileNumInput}
                                 keyboardType="numeric"
-                                value={lowerLimit.toString()}
-                                onChangeText={(text) => setLowerLimit(parseFloat(text))}
+                                value={lowerLimit}
+                                onChangeText={(text) => setLowerLimit(text)}
                             />                        
                         </View>
                         <CheckBox
