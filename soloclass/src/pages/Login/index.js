@@ -13,8 +13,8 @@ import { setLoggedUser } from "../../data/DataRules";
 
 export default function Login(){
 
-    const [email, setEmail] = useState('teste@gmail.com');
-    const [password, setPassword] = useState('123456');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [ loaderVisible, setLoaderVisible ] = useState(false);
 
     const navigator = useNavigation();
