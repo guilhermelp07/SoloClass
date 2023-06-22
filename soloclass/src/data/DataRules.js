@@ -1,4 +1,5 @@
 let soilProfileList = [];
+let loggedUser = '';
 
 export function getSoilProfileList(){ return soilProfileList }
 
@@ -49,3 +50,7 @@ export function getStringDrenagem(intensidade){
         case 8: { return '8 - Péssima'; }
     }
 }
+
+export function setLoggedUser(username){ loggedUser = username; }
+
+export function getLoggerUser(){ return loggedUser; }

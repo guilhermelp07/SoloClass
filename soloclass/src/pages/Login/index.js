@@ -9,12 +9,12 @@ import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, get , ref, child } from "firebase/database";
 import LoadAnimation from "../../components/LoadAnimation";
+import { setLoggedUser } from "../../data/DataRules";
 
 export default function Login(){
 
     const [email, setEmail] = useState('teste@gmail.com');
     const [password, setPassword] = useState('123456');
-    const [ userName, setUserName ] = useState('default');
     const [ loaderVisible, setLoaderVisible ] = useState(false);
 
     const navigator = useNavigation();
@@ -22,6 +22,10 @@ export default function Login(){
     const dbRef = ref(getDatabase(firebase));
 
     function login(){
+        if(email === '' || password === ''){
+            Alert.alert("","Favor informar o email/senha!");
+            return;
+        }
         setLoaderVisible(true);
         const auth = getAuth(firebase);
         signInWithEmailAndPassword(auth, email, password)
@@ -29,7 +33,7 @@ export default function Login(){
                 get(child(dbRef, `usuarios/${value.user.uid}`))
                     .then((snapshot) => {
                         if(snapshot.exists()){
-                            setUserName(snapshot.val().username);
+                            setLoggedUser(snapshot.val().username);
                             console.log("snapshot.val: "+snapshot.val().username);
                             // alert("snapshot.val: "+snapshot.val().username);
                         } else {
